@@ -7,7 +7,9 @@ use Mix.Config
 
 # General application configuration
 config :pulap,
-  ecto_repos: [Pulap.Repo]
+  ecto_repos: [Pulap.Repo],
+  migration_primary_key: [id: :uuid, type: :binary_id],
+  migration_timestamps: [type: :timestamptz]
 
 # Configures the endpoint
 config :pulap, PulapWeb.Endpoint,

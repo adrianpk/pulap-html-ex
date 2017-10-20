@@ -51,8 +51,10 @@ config :phoenix, :stacktrace_depth, 20
 # Configure your database
 config :pulap, Pulap.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
+  username: "adrian",
+  password: "anpok",
   database: "pulap_dev",
   hostname: "localhost",
-  pool_size: 10
+  pool_size: 10,
+  extensions: [{Geo.PostGIS.Extension, library: Geo}],
+  types: Pulap.PostgresTypes

@@ -1,0 +1,83 @@
+<h2>Show User</h2>
+
+<ul>
+
+  <li>
+    <strong>Id:</strong>
+    <%= @user.id %>
+  </li>
+
+  <li>
+    <strong>Username:</strong>
+    <%= @user.username %>
+  </li>
+
+  <li>
+    <strong>Password:</strong>
+    <%= @user.password %>
+  </li>
+
+  <li>
+    <strong>Password hash:</strong>
+    <%= @user.password_hash %>
+  </li>
+
+  <li>
+    <strong>Email:</strong>
+    <%= @user.email %>
+  </li>
+
+  <li>
+    <strong>Given name:</strong>
+    <%= @user.given_name %>
+  </li>
+
+  <li>
+    <strong>Middle names:</strong>
+    <%= @user.middle_names %>
+  </li>
+
+  <li>
+    <strong>Family name:</strong>
+    <%= @user.family_name %>
+  </li>
+
+  <li>
+    <strong>Card:</strong>
+    <%= @user.card %>
+  </li>
+
+  <li>
+    <strong>Annotations:</strong>
+    <%= @user.annotations %>
+  </li>
+
+  <li>
+    <strong>Geolocation:</strong>
+    <%= @user.geolocation %>
+  </li>
+
+  <li>
+    <strong>Started at:</strong>
+    <%= @user.started_at %>
+  </li>
+
+  <li>
+    <strong>Created by:</strong>
+    <%= @user.created_by %>
+  </li>
+
+  <li>
+    <strong>Is active:</strong>
+    <%= @user.is_active %>
+  </li>
+
+  <li>
+    <strong>Is logical deleted:</strong>
+    <%= @user.is_logical_deleted %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: user_path(@conn, :edit, @user) %></span>
+<span><%= link "Back", to: user_path(@conn, :index) %></span>

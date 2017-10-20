@@ -16,4 +16,5 @@ config :pulap, Pulap.Repo,
   password: "postgres",
   database: "pulap_test",
   hostname: "localhost",
-  pool: Ecto.Adapters.SQL.Sandbox
+  pool: Ecto.Adapters.SQL.Sandbox,
+  extensions: [{Geo.PostGIS.Extension, library: Geo}]

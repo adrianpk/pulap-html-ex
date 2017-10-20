@@ -1,0 +1,54 @@
+<h2>Listing Users</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Username</th>
+      <th>Password</th>
+      <th>Password hash</th>
+      <th>Email</th>
+      <th>Given name</th>
+      <th>Middle names</th>
+      <th>Family name</th>
+      <th>Card</th>
+      <th>Annotations</th>
+      <th>Geolocation</th>
+      <th>Started at</th>
+      <th>Created by</th>
+      <th>Is active</th>
+      <th>Is logical deleted</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for user <- @users do %>
+    <tr>
+      <td><%= user.id %></td>
+      <td><%= user.username %></td>
+      <td><%= user.password %></td>
+      <td><%= user.password_hash %></td>
+      <td><%= user.email %></td>
+      <td><%= user.given_name %></td>
+      <td><%= user.middle_names %></td>
+      <td><%= user.family_name %></td>
+      <td><%= user.card %></td>
+      <td><%= user.annotations %></td>
+      <td><%= user.geolocation %></td>
+      <td><%= user.started_at %></td>
+      <td><%= user.created_by %></td>
+      <td><%= user.is_active %></td>
+      <td><%= user.is_logical_deleted %></td>
+
+      <td class="text-right">
+        <span><%= link "Show", to: user_path(@conn, :show, user), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Edit", to: user_path(@conn, :edit, user), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Delete", to: user_path(@conn, :delete, user), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New User", to: user_path(@conn, :new) %></span>
