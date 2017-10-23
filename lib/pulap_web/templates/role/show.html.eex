@@ -1,0 +1,38 @@
+<h2>Show Role</h2>
+
+<ul>
+
+  <li>
+    <strong>Id:</strong>
+    <%= @role.id %>
+  </li>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @role.name %>
+  </li>
+
+  <li>
+    <strong>Description:</strong>
+    <%= @role.description %>
+  </li>
+
+  <li>
+    <strong>Is active:</strong>
+    <%= @role.is_active %>
+  </li>
+
+  <li>
+    <strong>Is logical deleted:</strong>
+    <%= @role.is_logical_deleted %>
+  </li>
+
+  <li>
+    <strong>Started at:</strong>
+    <%= @role.started_at %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: role_path(@conn, :edit, @role) %></span>
+<span><%= link "Back", to: role_path(@conn, :index) %></span>

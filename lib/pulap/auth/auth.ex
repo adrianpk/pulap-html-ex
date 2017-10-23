@@ -101,4 +101,196 @@ defmodule Pulap.Auth do
   def change_user(%User{} = user) do
     User.changeset(user, %{})
   end
+
+  alias Pulap.Auth.Organization
+
+  @doc """
+  Returns the list of organizations.
+
+  ## Examples
+
+      iex> list_organizations()
+      [%Organization{}, ...]
+
+  """
+  def list_organizations do
+    Repo.all(Organization)
+  end
+
+  @doc """
+  Gets a single organization.
+
+  Raises `Ecto.NoResultsError` if the Organization does not exist.
+
+  ## Examples
+
+      iex> get_organization!(123)
+      %Organization{}
+
+      iex> get_organization!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_organization!(id), do: Repo.get!(Organization, id)
+
+  @doc """
+  Creates a organization.
+
+  ## Examples
+
+      iex> create_organization(%{field: value})
+      {:ok, %Organization{}}
+
+      iex> create_organization(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_organization(attrs \\ %{}) do
+    %Organization{}
+    |> Organization.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  @doc """
+  Updates a organization.
+
+  ## Examples
+
+      iex> update_organization(organization, %{field: new_value})
+      {:ok, %Organization{}}
+
+      iex> update_organization(organization, %{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def update_organization(%Organization{} = organization, attrs) do
+    organization
+    |> Organization.changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc """
+  Deletes a Organization.
+
+  ## Examples
+
+      iex> delete_organization(organization)
+      {:ok, %Organization{}}
+
+      iex> delete_organization(organization)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_organization(%Organization{} = organization) do
+    Repo.delete(organization)
+  end
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking organization changes.
+
+  ## Examples
+
+      iex> change_organization(organization)
+      %Ecto.Changeset{source: %Organization{}}
+
+  """
+  def change_organization(%Organization{} = organization) do
+    Organization.changeset(organization, %{})
+  end
+
+  alias Pulap.Auth.Role
+
+  @doc """
+  Returns the list of roles.
+
+  ## Examples
+
+      iex> list_roles()
+      [%Role{}, ...]
+
+  """
+  def list_roles do
+    Repo.all(Role)
+  end
+
+  @doc """
+  Gets a single role.
+
+  Raises `Ecto.NoResultsError` if the Role does not exist.
+
+  ## Examples
+
+      iex> get_role!(123)
+      %Role{}
+
+      iex> get_role!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_role!(id), do: Repo.get!(Role, id)
+
+  @doc """
+  Creates a role.
+
+  ## Examples
+
+      iex> create_role(%{field: value})
+      {:ok, %Role{}}
+
+      iex> create_role(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_role(attrs \\ %{}) do
+    %Role{}
+    |> Role.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  @doc """
+  Updates a role.
+
+  ## Examples
+
+      iex> update_role(role, %{field: new_value})
+      {:ok, %Role{}}
+
+      iex> update_role(role, %{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def update_role(%Role{} = role, attrs) do
+    role
+    |> Role.changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc """
+  Deletes a Role.
+
+  ## Examples
+
+      iex> delete_role(role)
+      {:ok, %Role{}}
+
+      iex> delete_role(role)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_role(%Role{} = role) do
+    Repo.delete(role)
+  end
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking role changes.
+
+  ## Examples
+
+      iex> change_role(role)
+      %Ecto.Changeset{source: %Role{}}
+
+  """
+  def change_role(%Role{} = role) do
+    Role.changeset(role, %{})
+  end
 end
