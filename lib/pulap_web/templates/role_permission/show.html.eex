@@ -1,0 +1,38 @@
+<h2>Show Role permission</h2>
+
+<ul>
+
+  <li>
+    <strong>Id:</strong>
+    <%= @role_permission.id %>
+  </li>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @role_permission.name %>
+  </li>
+
+  <li>
+    <strong>Description:</strong>
+    <%= @role_permission.description %>
+  </li>
+
+  <li>
+    <strong>Is active:</strong>
+    <%= @role_permission.is_active %>
+  </li>
+
+  <li>
+    <strong>Is logical deleted:</strong>
+    <%= @role_permission.is_logical_deleted %>
+  </li>
+
+  <li>
+    <strong>Started at:</strong>
+    <%= @role_permission.started_at %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: role_permission_path(@conn, :edit, @role_permission) %></span>
+<span><%= link "Back", to: role_permission_path(@conn, :index) %></span>

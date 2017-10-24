@@ -16,7 +16,7 @@ defmodule Pulap.Repo.Migrations.CreateOrganizations do
     execute("SELECT AddGeometryColumn ('organizations','geolocation',4326,'POINT',2);")
 
     alter table(:organizations) do
-      add :created_by, :binary_id, null: false
+      add :created_by, references(:users, type: :binary_id, on_delete: :nothing)
       add :is_active, :boolean, default: false, null: false
       add :is_logical_deleted, :boolean, default: false, null: false
       add :started_at, :utc_datetime

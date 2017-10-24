@@ -8,7 +8,7 @@ defmodule Pulap.Repo.Migrations.CreateRoles do
       add :description, :string, size: 255
       add :organization_name, :string, size: 32
       add :organization_id, references(:organizations, type: :binary_id, on_delete: :nothing)
-      add :created_by, :binary_id, null: false
+      add :created_by, references(:users, type: :binary_id, on_delete: :nothing)
       add :is_active, :boolean, default: false, null: false
       add :is_logical_deleted, :boolean, default: false, null: false
       add :started_at, :utc_datetime

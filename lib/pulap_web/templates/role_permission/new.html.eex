@@ -1,0 +1,5 @@
+<h2>New Role permission</h2>
+
+<%= render "form.html", Map.put(assigns, :action, role_permission_path(@conn, :create)) %>
+
+<span><%= link "Back", to: role_permission_path(@conn, :index) %></span>

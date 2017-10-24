@@ -1,0 +1,5 @@
+<h2>New Resource permission</h2>
+
+<%= render "form.html", Map.put(assigns, :action, resource_permission_path(@conn, :create)) %>
+
+<span><%= link "Back", to: resource_permission_path(@conn, :index) %></span>

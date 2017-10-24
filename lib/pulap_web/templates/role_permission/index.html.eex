@@ -1,0 +1,36 @@
+<h2>Listing Role permissions</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Is active</th>
+      <th>Is logical deleted</th>
+      <th>Started at</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for role_permission <- @role_permissions do %>
+    <tr>
+      <td><%= role_permission.id %></td>
+      <td><%= role_permission.name %></td>
+      <td><%= role_permission.description %></td>
+      <td><%= role_permission.is_active %></td>
+      <td><%= role_permission.is_logical_deleted %></td>
+      <td><%= role_permission.started_at %></td>
+
+      <td class="text-right">
+        <span><%= link "Show", to: role_permission_path(@conn, :show, role_permission), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Edit", to: role_permission_path(@conn, :edit, role_permission), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Delete", to: role_permission_path(@conn, :delete, role_permission), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Role permission", to: role_permission_path(@conn, :new) %></span>

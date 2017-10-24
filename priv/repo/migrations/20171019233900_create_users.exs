@@ -17,7 +17,7 @@ defmodule Pulap.Repo.Migrations.CreateUsers do
     execute("SELECT AddGeometryColumn ('users','geolocation',4326,'POINT',2);")
 
     alter table(:users) do
-      add :created_by, :binary_id
+      add :created_by, references(:users, type: :binary_id, on_delete: :nothing)
       add :is_active, :boolean, default: false, null: false
       add :is_logical_deleted, :boolean, default: false, null: false
       add :started_at, :timestamptz

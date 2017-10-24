@@ -17,7 +17,7 @@ defmodule Pulap.Auth.User do
     field :is_active, :boolean, default: false
     field :is_logical_deleted, :boolean, default: false
     field :middle_names, :string
-    field :password, :string
+    field :password, :string, virtual: true
     field :password_hash, :string
     field :started_at, :utc_datetime
     field :username, :string

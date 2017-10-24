@@ -1,0 +1,38 @@
+<h2>Show Resource permission</h2>
+
+<ul>
+
+  <li>
+    <strong>Id:</strong>
+    <%= @resource_permission.id %>
+  </li>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @resource_permission.name %>
+  </li>
+
+  <li>
+    <strong>Description:</strong>
+    <%= @resource_permission.description %>
+  </li>
+
+  <li>
+    <strong>Is active:</strong>
+    <%= @resource_permission.is_active %>
+  </li>
+
+  <li>
+    <strong>Is logical deleted:</strong>
+    <%= @resource_permission.is_logical_deleted %>
+  </li>
+
+  <li>
+    <strong>Started at:</strong>
+    <%= @resource_permission.started_at %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: resource_permission_path(@conn, :edit, @resource_permission) %></span>
+<span><%= link "Back", to: resource_permission_path(@conn, :index) %></span>
