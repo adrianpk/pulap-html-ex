@@ -1,0 +1,43 @@
+<h2>Show Permission</h2>
+
+<ul>
+
+  <li>
+    <strong>Id:</strong>
+    <%= @permission.id %>
+  </li>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @permission.name %>
+  </li>
+
+  <li>
+    <strong>Description:</strong>
+    <%= @permission.description %>
+  </li>
+
+  <li>
+    <strong>Organization name:</strong>
+    <%= @permission.organization_name %>
+  </li>
+
+  <li>
+    <strong>Is active:</strong>
+    <%= @permission.is_active %>
+  </li>
+
+  <li>
+    <strong>Is logical deleted:</strong>
+    <%= @permission.is_logical_deleted %>
+  </li>
+
+  <li>
+    <strong>Started at:</strong>
+    <%= @permission.started_at %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: permission_path(@conn, :edit, @permission) %></span>
+<span><%= link "Back", to: permission_path(@conn, :index) %></span>

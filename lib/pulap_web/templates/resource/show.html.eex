@@ -1,0 +1,48 @@
+<h2>Show Resource</h2>
+
+<ul>
+
+  <li>
+    <strong>Id:</strong>
+    <%= @resource.id %>
+  </li>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @resource.name %>
+  </li>
+
+  <li>
+    <strong>Description:</strong>
+    <%= @resource.description %>
+  </li>
+
+  <li>
+    <strong>Tag:</strong>
+    <%= @resource.tag %>
+  </li>
+
+  <li>
+    <strong>Organization name:</strong>
+    <%= @resource.organization_name %>
+  </li>
+
+  <li>
+    <strong>Is active:</strong>
+    <%= @resource.is_active %>
+  </li>
+
+  <li>
+    <strong>Is logical deleted:</strong>
+    <%= @resource.is_logical_deleted %>
+  </li>
+
+  <li>
+    <strong>Started at:</strong>
+    <%= @resource.started_at %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: resource_path(@conn, :edit, @resource) %></span>
+<span><%= link "Back", to: resource_path(@conn, :index) %></span>

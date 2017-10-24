@@ -1,0 +1,38 @@
+<h2>Listing Permissions</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Organization name</th>
+      <th>Is active</th>
+      <th>Is logical deleted</th>
+      <th>Started at</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for permission <- @permissions do %>
+    <tr>
+      <td><%= permission.id %></td>
+      <td><%= permission.name %></td>
+      <td><%= permission.description %></td>
+      <td><%= permission.organization_name %></td>
+      <td><%= permission.is_active %></td>
+      <td><%= permission.is_logical_deleted %></td>
+      <td><%= permission.started_at %></td>
+
+      <td class="text-right">
+        <span><%= link "Show", to: permission_path(@conn, :show, permission), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Edit", to: permission_path(@conn, :edit, permission), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Delete", to: permission_path(@conn, :delete, permission), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Permission", to: permission_path(@conn, :new) %></span>

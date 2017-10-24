@@ -1,8 +1,8 @@
-defmodule Pulap.Repo.Migrations.CreateRoles do
+defmodule Pulap.Repo.Migrations.CreatePermissions do
   use Ecto.Migration
 
   def change do
-    create table(:roles, primary_key: false) do
+    create table(:permissions, primary_key: false) do
       add :id, :binary_id, primary_key: true
       add :name, :string, size: 32, null: false
       add :description, :string, size: 255
@@ -15,9 +15,8 @@ defmodule Pulap.Repo.Migrations.CreateRoles do
 
       timestamps(type: :timestamptz)
     end
-    create index(:roles, [:organization_id])
-    create index(:roles, [:created_by])
 
+    create index(:permissions, [:organization_id])
+    create index(:permissions, [:created_by])
   end
-
 end

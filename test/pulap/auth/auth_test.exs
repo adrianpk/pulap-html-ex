@@ -236,4 +236,150 @@ defmodule Pulap.AuthTest do
       assert %Ecto.Changeset{} = Auth.change_role(role)
     end
   end
+
+  describe "permissions" do
+    alias Pulap.Auth.Permission
+
+    @valid_attrs %{description: "some description", id: "7488a646-e31f-11e4-aace-600308960662", is_active: true, is_logical_deleted: true, name: "some name", organization_name: "some organization_name", started_at: "2010-04-17 14:00:00.000000Z"}
+    @update_attrs %{description: "some updated description", id: "7488a646-e31f-11e4-aace-600308960668", is_active: false, is_logical_deleted: false, name: "some updated name", organization_name: "some updated organization_name", started_at: "2011-05-18 15:01:01.000000Z"}
+    @invalid_attrs %{description: nil, id: nil, is_active: nil, is_logical_deleted: nil, name: nil, organization_name: nil, started_at: nil}
+
+    def permission_fixture(attrs \\ %{}) do
+      {:ok, permission} =
+        attrs
+        |> Enum.into(@valid_attrs)
+        |> Auth.create_permission()
+
+      permission
+    end
+
+    test "list_permissions/0 returns all permissions" do
+      permission = permission_fixture()
+      assert Auth.list_permissions() == [permission]
+    end
+
+    test "get_permission!/1 returns the permission with given id" do
+      permission = permission_fixture()
+      assert Auth.get_permission!(permission.id) == permission
+    end
+
+    test "create_permission/1 with valid data creates a permission" do
+      assert {:ok, %Permission{} = permission} = Auth.create_permission(@valid_attrs)
+      assert permission.description == "some description"
+      assert permission.id == "7488a646-e31f-11e4-aace-600308960662"
+      assert permission.is_active == true
+      assert permission.is_logical_deleted == true
+      assert permission.name == "some name"
+      assert permission.organization_name == "some organization_name"
+      assert permission.started_at == DateTime.from_naive!(~N[2010-04-17 14:00:00.000000Z], "Etc/UTC")
+    end
+
+    test "create_permission/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Auth.create_permission(@invalid_attrs)
+    end
+
+    test "update_permission/2 with valid data updates the permission" do
+      permission = permission_fixture()
+      assert {:ok, permission} = Auth.update_permission(permission, @update_attrs)
+      assert %Permission{} = permission
+      assert permission.description == "some updated description"
+      assert permission.id == "7488a646-e31f-11e4-aace-600308960668"
+      assert permission.is_active == false
+      assert permission.is_logical_deleted == false
+      assert permission.name == "some updated name"
+      assert permission.organization_name == "some updated organization_name"
+      assert permission.started_at == DateTime.from_naive!(~N[2011-05-18 15:01:01.000000Z], "Etc/UTC")
+    end
+
+    test "update_permission/2 with invalid data returns error changeset" do
+      permission = permission_fixture()
+      assert {:error, %Ecto.Changeset{}} = Auth.update_permission(permission, @invalid_attrs)
+      assert permission == Auth.get_permission!(permission.id)
+    end
+
+    test "delete_permission/1 deletes the permission" do
+      permission = permission_fixture()
+      assert {:ok, %Permission{}} = Auth.delete_permission(permission)
+      assert_raise Ecto.NoResultsError, fn -> Auth.get_permission!(permission.id) end
+    end
+
+    test "change_permission/1 returns a permission changeset" do
+      permission = permission_fixture()
+      assert %Ecto.Changeset{} = Auth.change_permission(permission)
+    end
+  end
+
+  describe "resources" do
+    alias Pulap.Auth.Resource
+
+    @valid_attrs %{description: "some description", id: "7488a646-e31f-11e4-aace-600308960662", is_active: true, is_logical_deleted: true, name: "some name", organization_name: "some organization_name", started_at: "2010-04-17 14:00:00.000000Z", tag: "some tag"}
+    @update_attrs %{description: "some updated description", id: "7488a646-e31f-11e4-aace-600308960668", is_active: false, is_logical_deleted: false, name: "some updated name", organization_name: "some updated organization_name", started_at: "2011-05-18 15:01:01.000000Z", tag: "some updated tag"}
+    @invalid_attrs %{description: nil, id: nil, is_active: nil, is_logical_deleted: nil, name: nil, organization_name: nil, started_at: nil, tag: nil}
+
+    def resource_fixture(attrs \\ %{}) do
+      {:ok, resource} =
+        attrs
+        |> Enum.into(@valid_attrs)
+        |> Auth.create_resource()
+
+      resource
+    end
+
+    test "list_resources/0 returns all resources" do
+      resource = resource_fixture()
+      assert Auth.list_resources() == [resource]
+    end
+
+    test "get_resource!/1 returns the resource with given id" do
+      resource = resource_fixture()
+      assert Auth.get_resource!(resource.id) == resource
+    end
+
+    test "create_resource/1 with valid data creates a resource" do
+      assert {:ok, %Resource{} = resource} = Auth.create_resource(@valid_attrs)
+      assert resource.description == "some description"
+      assert resource.id == "7488a646-e31f-11e4-aace-600308960662"
+      assert resource.is_active == true
+      assert resource.is_logical_deleted == true
+      assert resource.name == "some name"
+      assert resource.organization_name == "some organization_name"
+      assert resource.started_at == DateTime.from_naive!(~N[2010-04-17 14:00:00.000000Z], "Etc/UTC")
+      assert resource.tag == "some tag"
+    end
+
+    test "create_resource/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Auth.create_resource(@invalid_attrs)
+    end
+
+    test "update_resource/2 with valid data updates the resource" do
+      resource = resource_fixture()
+      assert {:ok, resource} = Auth.update_resource(resource, @update_attrs)
+      assert %Resource{} = resource
+      assert resource.description == "some updated description"
+      assert resource.id == "7488a646-e31f-11e4-aace-600308960668"
+      assert resource.is_active == false
+      assert resource.is_logical_deleted == false
+      assert resource.name == "some updated name"
+      assert resource.organization_name == "some updated organization_name"
+      assert resource.started_at == DateTime.from_naive!(~N[2011-05-18 15:01:01.000000Z], "Etc/UTC")
+      assert resource.tag == "some updated tag"
+    end
+
+    test "update_resource/2 with invalid data returns error changeset" do
+      resource = resource_fixture()
+      assert {:error, %Ecto.Changeset{}} = Auth.update_resource(resource, @invalid_attrs)
+      assert resource == Auth.get_resource!(resource.id)
+    end
+
+    test "delete_resource/1 deletes the resource" do
+      resource = resource_fixture()
+      assert {:ok, %Resource{}} = Auth.delete_resource(resource)
+      assert_raise Ecto.NoResultsError, fn -> Auth.get_resource!(resource.id) end
+    end
+
+    test "change_resource/1 returns a resource changeset" do
+      resource = resource_fixture()
+      assert %Ecto.Changeset{} = Auth.change_resource(resource)
+    end
+  end
 end
