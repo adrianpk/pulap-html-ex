@@ -21,6 +21,9 @@ defmodule PulapWeb.Router do
     resources "/users", UserController do
       # nested resources
     end
+    resources "/profile", ProfileController do
+      # nested resources
+    end
     resources "/organizations", OrganizationController do
       # nested resources
     end

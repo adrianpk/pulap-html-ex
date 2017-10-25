@@ -1,0 +1,60 @@
+<h2>Listing Profiles</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Description</th>
+      <th>Bio</th>
+      <th>Moto</th>
+      <th>Website</th>
+      <th>Anniversary date</th>
+      <th>Avatar path</th>
+      <th>Avatar</th>
+      <th>Header path</th>
+      <th>Header</th>
+      <th>Cards</th>
+      <th>Annotations</th>
+      <th>Geolocation</th>
+      <th>Is active</th>
+      <th>Is logical deleted</th>
+      <th>Started at</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for profile <- @profiles do %>
+    <tr>
+      <td><%= profile.id %></td>
+      <td><%= profile.name %></td>
+      <td><%= profile.email %></td>
+      <td><%= profile.description %></td>
+      <td><%= profile.bio %></td>
+      <td><%= profile.moto %></td>
+      <td><%= profile.website %></td>
+      <td><%= profile.anniversary_date %></td>
+      <td><%= profile.avatar_path %></td>
+      <td><%= profile.avatar %></td>
+      <td><%= profile.header_path %></td>
+      <td><%= profile.header %></td>
+      <td><%= profile.cards %></td>
+      <td><%= profile.annotations %></td>
+      <td><%= profile.geolocation %></td>
+      <td><%= profile.is_active %></td>
+      <td><%= profile.is_logical_deleted %></td>
+      <td><%= profile.started_at %></td>
+
+      <td class="text-right">
+        <span><%= link "Show", to: profile_path(@conn, :show, profile), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Edit", to: profile_path(@conn, :edit, profile), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Delete", to: profile_path(@conn, :delete, profile), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Profile", to: profile_path(@conn, :new) %></span>

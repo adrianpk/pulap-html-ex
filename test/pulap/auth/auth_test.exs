@@ -522,4 +522,98 @@ defmodule Pulap.AuthTest do
       assert %Ecto.Changeset{} = Auth.change_resource_permission(resource_permission)
     end
   end
+
+  describe "profiles" do
+    alias Pulap.Auth.Profile
+
+    @valid_attrs %{anniversary_date: "2010-04-17 14:00:00.000000Z", annotations: "some annotations", avatar: "some avatar", avatar_path: "some avatar_path", bio: "some bio", cards: "some cards", description: "some description", email: "some email", geolocation: 120.5, header: "some header", header_path: "some header_path", id: "7488a646-e31f-11e4-aace-600308960662", is_active: true, is_logical_deleted: true, moto: "some moto", name: "some name", started_at: "2010-04-17 14:00:00.000000Z", website: "some website"}
+    @update_attrs %{anniversary_date: "2011-05-18 15:01:01.000000Z", annotations: "some updated annotations", avatar: "some updated avatar", avatar_path: "some updated avatar_path", bio: "some updated bio", cards: "some updated cards", description: "some updated description", email: "some updated email", geolocation: 456.7, header: "some updated header", header_path: "some updated header_path", id: "7488a646-e31f-11e4-aace-600308960668", is_active: false, is_logical_deleted: false, moto: "some updated moto", name: "some updated name", started_at: "2011-05-18 15:01:01.000000Z", website: "some updated website"}
+    @invalid_attrs %{anniversary_date: nil, annotations: nil, avatar: nil, avatar_path: nil, bio: nil, cards: nil, description: nil, email: nil, geolocation: nil, header: nil, header_path: nil, id: nil, is_active: nil, is_logical_deleted: nil, moto: nil, name: nil, started_at: nil, website: nil}
+
+    def profile_fixture(attrs \\ %{}) do
+      {:ok, profile} =
+        attrs
+        |> Enum.into(@valid_attrs)
+        |> Auth.create_profile()
+
+      profile
+    end
+
+    test "list_profiles/0 returns all profiles" do
+      profile = profile_fixture()
+      assert Auth.list_profiles() == [profile]
+    end
+
+    test "get_profile!/1 returns the profile with given id" do
+      profile = profile_fixture()
+      assert Auth.get_profile!(profile.id) == profile
+    end
+
+    test "create_profile/1 with valid data creates a profile" do
+      assert {:ok, %Profile{} = profile} = Auth.create_profile(@valid_attrs)
+      assert profile.anniversary_date == DateTime.from_naive!(~N[2010-04-17 14:00:00.000000Z], "Etc/UTC")
+      assert profile.annotations == "some annotations"
+      assert profile.avatar == "some avatar"
+      assert profile.avatar_path == "some avatar_path"
+      assert profile.bio == "some bio"
+      assert profile.cards == "some cards"
+      assert profile.description == "some description"
+      assert profile.email == "some email"
+      assert profile.geolocation == 120.5
+      assert profile.header == "some header"
+      assert profile.header_path == "some header_path"
+      assert profile.id == "7488a646-e31f-11e4-aace-600308960662"
+      assert profile.is_active == true
+      assert profile.is_logical_deleted == true
+      assert profile.moto == "some moto"
+      assert profile.name == "some name"
+      assert profile.started_at == DateTime.from_naive!(~N[2010-04-17 14:00:00.000000Z], "Etc/UTC")
+      assert profile.website == "some website"
+    end
+
+    test "create_profile/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Auth.create_profile(@invalid_attrs)
+    end
+
+    test "update_profile/2 with valid data updates the profile" do
+      profile = profile_fixture()
+      assert {:ok, profile} = Auth.update_profile(profile, @update_attrs)
+      assert %Profile{} = profile
+      assert profile.anniversary_date == DateTime.from_naive!(~N[2011-05-18 15:01:01.000000Z], "Etc/UTC")
+      assert profile.annotations == "some updated annotations"
+      assert profile.avatar == "some updated avatar"
+      assert profile.avatar_path == "some updated avatar_path"
+      assert profile.bio == "some updated bio"
+      assert profile.cards == "some updated cards"
+      assert profile.description == "some updated description"
+      assert profile.email == "some updated email"
+      assert profile.geolocation == 456.7
+      assert profile.header == "some updated header"
+      assert profile.header_path == "some updated header_path"
+      assert profile.id == "7488a646-e31f-11e4-aace-600308960668"
+      assert profile.is_active == false
+      assert profile.is_logical_deleted == false
+      assert profile.moto == "some updated moto"
+      assert profile.name == "some updated name"
+      assert profile.started_at == DateTime.from_naive!(~N[2011-05-18 15:01:01.000000Z], "Etc/UTC")
+      assert profile.website == "some updated website"
+    end
+
+    test "update_profile/2 with invalid data returns error changeset" do
+      profile = profile_fixture()
+      assert {:error, %Ecto.Changeset{}} = Auth.update_profile(profile, @invalid_attrs)
+      assert profile == Auth.get_profile!(profile.id)
+    end
+
+    test "delete_profile/1 deletes the profile" do
+      profile = profile_fixture()
+      assert {:ok, %Profile{}} = Auth.delete_profile(profile)
+      assert_raise Ecto.NoResultsError, fn -> Auth.get_profile!(profile.id) end
+    end
+
+    test "change_profile/1 returns a profile changeset" do
+      profile = profile_fixture()
+      assert %Ecto.Changeset{} = Auth.change_profile(profile)
+    end
+  end
 end

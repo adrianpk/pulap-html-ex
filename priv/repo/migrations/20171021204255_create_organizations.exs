@@ -13,7 +13,7 @@ defmodule Pulap.Repo.Migrations.CreateOrganizations do
       add :owner_id, references(:users, type: :binary_id, on_delete: :nothing)
     end
 
-    execute("SELECT AddGeometryColumn ('organizations','geolocation',4326,'POINT',2);")
+    execute("SELECT AddGeometryColumn ('organizations', 'geolocation', 4326, 'POINT', 2);")
 
     alter table(:organizations) do
       add :created_by, references(:users, type: :binary_id, on_delete: :nothing)

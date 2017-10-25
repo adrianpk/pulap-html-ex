@@ -14,7 +14,7 @@ defmodule Pulap.Repo.Migrations.CreateUsers do
       add :annotations, :jsonb
     end
 
-    execute("SELECT AddGeometryColumn ('users','geolocation',4326,'POINT',2);")
+    execute("SELECT AddGeometryColumn ('users', 'geolocation', 4326, 'POINT', 2);")
 
     alter table(:users) do
       add :created_by, references(:users, type: :binary_id, on_delete: :nothing)
