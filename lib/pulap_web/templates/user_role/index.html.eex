@@ -1,0 +1,36 @@
+<h2>Listing User roles</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Is active</th>
+      <th>Is logical deleted</th>
+      <th>Started at</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for user_role <- @user_roles do %>
+    <tr>
+      <td><%= user_role.id %></td>
+      <td><%= user_role.name %></td>
+      <td><%= user_role.description %></td>
+      <td><%= user_role.is_active %></td>
+      <td><%= user_role.is_logical_deleted %></td>
+      <td><%= user_role.started_at %></td>
+
+      <td class="text-right">
+        <span><%= link "Show", to: user_role_path(@conn, :show, user_role), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Edit", to: user_role_path(@conn, :edit, user_role), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Delete", to: user_role_path(@conn, :delete, user_role), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New User role", to: user_role_path(@conn, :new) %></span>
