@@ -1,0 +1,38 @@
+<h2>Listing Properties sets</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Holder</th>
+      <th>Is active</th>
+      <th>Is logical deleted</th>
+      <th>Started at</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for properties_set <- @properties_sets do %>
+    <tr>
+      <td><%= properties_set.id %></td>
+      <td><%= properties_set.name %></td>
+      <td><%= properties_set.description %></td>
+      <td><%= properties_set.holder_id %></td>
+      <td><%= properties_set.is_active %></td>
+      <td><%= properties_set.is_logical_deleted %></td>
+      <td><%= properties_set.started_at %></td>
+
+      <td class="text-right">
+        <span><%= link "Show", to: properties_set_path(@conn, :show, properties_set), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Edit", to: properties_set_path(@conn, :edit, properties_set), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Delete", to: properties_set_path(@conn, :delete, properties_set), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Properties set", to: properties_set_path(@conn, :new) %></span>

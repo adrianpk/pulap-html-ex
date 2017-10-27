@@ -45,6 +45,9 @@ defmodule PulapWeb.Router do
     resources "/user-roles", UserRoleController do
       # nested resources
     end
+    resources "/properties-set", PropertiesSetController do
+      # nested resources
+    end
   end
 
   # Other scopes may use custom stacks.

@@ -1,0 +1,43 @@
+<h2>Show Properties set</h2>
+
+<ul>
+
+  <li>
+    <strong>Id:</strong>
+    <%= @properties_set.id %>
+  </li>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @properties_set.name %>
+  </li>
+
+  <li>
+    <strong>Description:</strong>
+    <%= @properties_set.description %>
+  </li>
+
+  <li>
+    <strong>Holder:</strong>
+    <%= @properties_set.holder_id %>
+  </li>
+
+  <li>
+    <strong>Is active:</strong>
+    <%= @properties_set.is_active %>
+  </li>
+
+  <li>
+    <strong>Is logical deleted:</strong>
+    <%= @properties_set.is_logical_deleted %>
+  </li>
+
+  <li>
+    <strong>Started at:</strong>
+    <%= @properties_set.started_at %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: properties_set_path(@conn, :edit, @properties_set) %></span>
+<span><%= link "Back", to: properties_set_path(@conn, :index) %></span>
