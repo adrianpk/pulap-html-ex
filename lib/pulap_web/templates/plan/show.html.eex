@@ -1,0 +1,43 @@
+<h2>Show Plan</h2>
+
+<ul>
+
+  <li>
+    <strong>Id:</strong>
+    <%= @plan.id %>
+  </li>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @plan.name %>
+  </li>
+
+  <li>
+    <strong>Description:</strong>
+    <%= @plan.description %>
+  </li>
+
+  <li>
+    <strong>Started at:</strong>
+    <%= @plan.started_at %>
+  </li>
+
+  <li>
+    <strong>Ends at:</strong>
+    <%= @plan.ends_at %>
+  </li>
+
+  <li>
+    <strong>Is active:</strong>
+    <%= @plan.is_active %>
+  </li>
+
+  <li>
+    <strong>Is logical deleted:</strong>
+    <%= @plan.is_logical_deleted %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: plan_path(@conn, :edit, @plan) %></span>
+<span><%= link "Back", to: plan_path(@conn, :index) %></span>

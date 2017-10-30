@@ -1,0 +1,119 @@
+<%= form_for @changeset, @action, fn f -> %>
+  <%= if @changeset.action do %>
+    <div class="alert alert-danger">
+      <p>Oops, something went wrong! Please check the errors below.</p>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= label f, :id, class: "control-label" %>
+    <%= text_input f, :id, class: "form-control" %>
+    <%= error_tag f, :id %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :properties_set_name, class: "control-label" %>
+    <%= text_input f, :properties_set_name, class: "form-control" %>
+    <%= error_tag f, :properties_set_name %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :name, class: "control-label" %>
+    <%= text_input f, :name, class: "form-control" %>
+    <%= error_tag f, :name %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :description, class: "control-label" %>
+    <%= text_input f, :description, class: "form-control" %>
+    <%= error_tag f, :description %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :property_data_type, class: "control-label" %>
+    <%= text_input f, :property_data_type, class: "form-control" %>
+    <%= error_tag f, :property_data_type %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :boolean, class: "control-label" %>
+    <%= checkbox f, :boolean, class: "checkbox" %>
+    <%= error_tag f, :boolean %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :date, class: "control-label" %>
+    <%= date_select f, :date, class: "form-control" %>
+    <%= error_tag f, :date %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :datetime, class: "control-label" %>
+    <%= datetime_select f, :datetime, class: "form-control" %>
+    <%= error_tag f, :datetime %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :decimal, class: "control-label" %>
+    <%= number_input f, :decimal, step: "any", class: "form-control" %>
+    <%= error_tag f, :decimal %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :decimal, class: "control-label" %>
+    <%= number_input f, :decimal, step: "any", class: "form-control" %>
+    <%= error_tag f, :decimal %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :float, class: "control-label" %>
+    <%= number_input f, :float, step: "any", class: "form-control" %>
+    <%= error_tag f, :float %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :geolocation, class: "control-label" %>
+    <%= number_input f, :geolocation, step: "any", class: "form-control" %>
+    <%= error_tag f, :geolocation %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :integer, class: "control-label" %>
+    <%= number_input f, :integer, class: "form-control" %>
+    <%= error_tag f, :integer %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :string, class: "control-label" %>
+    <%= text_input f, :string, class: "form-control" %>
+    <%= error_tag f, :string %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :time, class: "control-label" %>
+    <%= time_select f, :time, class: "form-control" %>
+    <%= error_tag f, :time %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :uuid, class: "control-label" %>
+    <%= text_input f, :uuid, class: "form-control" %>
+    <%= error_tag f, :uuid %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :is_active, class: "control-label" %>
+    <%= checkbox f, :is_active, class: "checkbox" %>
+    <%= error_tag f, :is_active %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :is_logical_deleted, class: "control-label" %>
+    <%= checkbox f, :is_logical_deleted, class: "checkbox" %>
+    <%= error_tag f, :is_logical_deleted %>
+  </div>
+
+  <div class="form-group">
+    <%= submit "Submit", class: "btn btn-primary" %>
+  </div>
+<% end %>

@@ -1,0 +1,38 @@
+<h2>Listing Plans</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Started at</th>
+      <th>Ends at</th>
+      <th>Is active</th>
+      <th>Is logical deleted</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for plan <- @plans do %>
+    <tr>
+      <td><%= plan.id %></td>
+      <td><%= plan.name %></td>
+      <td><%= plan.description %></td>
+      <td><%= plan.started_at %></td>
+      <td><%= plan.ends_at %></td>
+      <td><%= plan.is_active %></td>
+      <td><%= plan.is_logical_deleted %></td>
+
+      <td class="text-right">
+        <span><%= link "Show", to: plan_path(@conn, :show, plan), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Edit", to: plan_path(@conn, :edit, plan), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Delete", to: plan_path(@conn, :delete, plan), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Plan", to: plan_path(@conn, :new) %></span>

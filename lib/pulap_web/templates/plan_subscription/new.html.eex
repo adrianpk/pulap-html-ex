@@ -1,0 +1,5 @@
+<h2>New Plan subscription</h2>
+
+<%= render "form.html", Map.put(assigns, :action, plan_subscription_path(@conn, :create)) %>
+
+<span><%= link "Back", to: plan_subscription_path(@conn, :index) %></span>

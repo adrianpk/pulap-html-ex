@@ -10,7 +10,6 @@ defmodule Pulap.Auth.Permission do
     field :is_logical_deleted, :boolean, default: false
     field :name, :string
     field :organization_name, :string
-    field :started_at, :utc_datetime
     field :organization_id, :id
     field :created_by, :id
 
@@ -20,7 +19,7 @@ defmodule Pulap.Auth.Permission do
   @doc false
   def changeset(%Permission{} = permission, attrs) do
     permission
-    |> cast(attrs, [:id, :name, :description, :organization_name, :is_active, :is_logical_deleted, :started_at])
-    |> validate_required([:id, :name, :description, :organization_name, :is_active, :is_logical_deleted, :started_at])
+    |> cast(attrs, [:id, :name, :description, :organization_name, :is_active, :is_logical_deleted])
+    |> validate_required([:id, :name, :description, :organization_name, :is_active, :is_logical_deleted])
   end
 end

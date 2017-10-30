@@ -1,0 +1,43 @@
+<h2>Show Plan subscription</h2>
+
+<ul>
+
+  <li>
+    <strong>Id:</strong>
+    <%= @plan_subscription.id %>
+  </li>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @plan_subscription.name %>
+  </li>
+
+  <li>
+    <strong>Description:</strong>
+    <%= @plan_subscription.description %>
+  </li>
+
+  <li>
+    <strong>Started at:</strong>
+    <%= @plan_subscription.started_at %>
+  </li>
+
+  <li>
+    <strong>Ends at:</strong>
+    <%= @plan_subscription.ends_at %>
+  </li>
+
+  <li>
+    <strong>Is active:</strong>
+    <%= @plan_subscription.is_active %>
+  </li>
+
+  <li>
+    <strong>Is logical deleted:</strong>
+    <%= @plan_subscription.is_logical_deleted %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: plan_subscription_path(@conn, :edit, @plan_subscription) %></span>
+<span><%= link "Back", to: plan_subscription_path(@conn, :index) %></span>

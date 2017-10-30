@@ -1,0 +1,98 @@
+<h2>Show Property</h2>
+
+<ul>
+
+  <li>
+    <strong>Id:</strong>
+    <%= @property.id %>
+  </li>
+
+  <li>
+    <strong>Properties set name:</strong>
+    <%= @property.properties_set_name %>
+  </li>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @property.name %>
+  </li>
+
+  <li>
+    <strong>Description:</strong>
+    <%= @property.description %>
+  </li>
+
+  <li>
+    <strong>Property data type:</strong>
+    <%= @property.property_data_type %>
+  </li>
+
+  <li>
+    <strong>Boolean:</strong>
+    <%= @property.boolean %>
+  </li>
+
+  <li>
+    <strong>Date:</strong>
+    <%= @property.date %>
+  </li>
+
+  <li>
+    <strong>Datetime:</strong>
+    <%= @property.datetime %>
+  </li>
+
+  <li>
+    <strong>Decimal:</strong>
+    <%= @property.decimal %>
+  </li>
+
+  <li>
+    <strong>Decimal:</strong>
+    <%= @property.decimal %>
+  </li>
+
+  <li>
+    <strong>Float:</strong>
+    <%= @property.float %>
+  </li>
+
+  <li>
+    <strong>Geolocation:</strong>
+    <%= @property.geolocation %>
+  </li>
+
+  <li>
+    <strong>Integer:</strong>
+    <%= @property.integer %>
+  </li>
+
+  <li>
+    <strong>String:</strong>
+    <%= @property.string %>
+  </li>
+
+  <li>
+    <strong>Time:</strong>
+    <%= @property.time %>
+  </li>
+
+  <li>
+    <strong>Uuid:</strong>
+    <%= @property.uuid %>
+  </li>
+
+  <li>
+    <strong>Is active:</strong>
+    <%= @property.is_active %>
+  </li>
+
+  <li>
+    <strong>Is logical deleted:</strong>
+    <%= @property.is_logical_deleted %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: property_path(@conn, :edit, @property) %></span>
+<span><%= link "Back", to: property_path(@conn, :index) %></span>

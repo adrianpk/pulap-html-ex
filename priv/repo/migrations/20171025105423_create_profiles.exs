@@ -3,6 +3,8 @@ defmodule Pulap.Repo.Migrations.CreateProfiles do
 
   def up do
     create table(:profiles) do
+      add :user_id, references(:users, type: :binary_id, on_delete: :nothing)
+      add :properties_set_name, :string
       add :name, :string, size: 32
       add :email, :string, size: 255
       add :description, :string, size: 255
@@ -23,13 +25,15 @@ defmodule Pulap.Repo.Migrations.CreateProfiles do
     alter table(:profiles) do
       add :is_active, :boolean, default: false, null: false
       add :is_logical_deleted, :boolean, default: false, null: false
-      add :started_at, :utc_datetime
-      add :created_by, references(:users, type: :binary_id, on_delete: :nothing)
+      add :created_by_id, references(:users, type: :binary_id, on_delete: :nothing)
+      add :updated_by_id, references(:users, type: :binary_id, on_delete: :nothing)
 
       timestamps()
     end
 
-    create index(:profiles, [:created_by])
+    create index(:profiles, [:created_by_id])
+    create index(:profiles, [:updated_by_id])
+
   end
 
   def down do

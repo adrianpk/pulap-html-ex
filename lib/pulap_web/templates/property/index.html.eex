@@ -1,0 +1,60 @@
+<h2>Listing Properties</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Properties set name</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Property data type</th>
+      <th>Boolean</th>
+      <th>Date</th>
+      <th>Datetime</th>
+      <th>Decimal</th>
+      <th>Decimal</th>
+      <th>Float</th>
+      <th>Geolocation</th>
+      <th>Integer</th>
+      <th>String</th>
+      <th>Time</th>
+      <th>Uuid</th>
+      <th>Is active</th>
+      <th>Is logical deleted</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for property <- @properties do %>
+    <tr>
+      <td><%= property.id %></td>
+      <td><%= property.properties_set_name %></td>
+      <td><%= property.name %></td>
+      <td><%= property.description %></td>
+      <td><%= property.property_data_type %></td>
+      <td><%= property.boolean %></td>
+      <td><%= property.date %></td>
+      <td><%= property.datetime %></td>
+      <td><%= property.decimal %></td>
+      <td><%= property.decimal %></td>
+      <td><%= property.float %></td>
+      <td><%= property.geolocation %></td>
+      <td><%= property.integer %></td>
+      <td><%= property.string %></td>
+      <td><%= property.time %></td>
+      <td><%= property.uuid %></td>
+      <td><%= property.is_active %></td>
+      <td><%= property.is_logical_deleted %></td>
+
+      <td class="text-right">
+        <span><%= link "Show", to: property_path(@conn, :show, property), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Edit", to: property_path(@conn, :edit, property), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Delete", to: property_path(@conn, :delete, property), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Property", to: property_path(@conn, :new) %></span>

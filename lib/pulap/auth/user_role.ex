@@ -9,7 +9,6 @@ defmodule Pulap.Auth.UserRole do
     field :is_active, :boolean, default: false
     field :is_logical_deleted, :boolean, default: false
     field :name, :string
-    field :started_at, :utc_datetime
     field :organization_id, :id
     field :user_id, :id
     field :role_id, :id
@@ -21,7 +20,7 @@ defmodule Pulap.Auth.UserRole do
   @doc false
   def changeset(%UserRole{} = user_role, attrs) do
     user_role
-    |> cast(attrs, [:name, :description, :is_active, :is_logical_deleted, :started_at])
-    |> validate_required([:name, :description, :is_active, :is_logical_deleted, :started_at])
+    |> cast(attrs, [:name, :description, :is_active, :is_logical_deleted])
+    |> validate_required([:name, :description, :is_active, :is_logical_deleted])
   end
 end

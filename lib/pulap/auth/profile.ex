@@ -20,7 +20,6 @@ defmodule Pulap.Auth.Profile do
     field :is_logical_deleted, :boolean, default: false
     field :moto, :string
     field :name, :string
-    field :started_at, :utc_datetime
     field :website, :string
     field :created_by, :id
 
@@ -30,7 +29,7 @@ defmodule Pulap.Auth.Profile do
   @doc false
   def changeset(%Profile{} = profile, attrs) do
     profile
-    |> cast(attrs, [:name, :email, :description, :bio, :moto, :website, :anniversary_date, :avatar_path, :avatar, :header_path, :header, :cards, :annotations, :geolocation, :is_active, :is_logical_deleted, :started_at])
-    |> validate_required([:name, :email, :description, :bio, :moto, :website, :anniversary_date, :avatar_path, :avatar, :header_path, :header, :cards, :annotations, :geolocation, :is_active, :is_logical_deleted, :started_at])
+    |> cast(attrs, [:name, :email, :description, :bio, :moto, :website, :anniversary_date, :avatar_path, :avatar, :header_path, :header, :cards, :annotations, :geolocation, :is_active, :is_logical_deleted])
+    |> validate_required([:name, :email, :description, :bio, :moto, :website, :anniversary_date, :avatar_path, :avatar, :header_path, :header, :cards, :annotations, :geolocation, :is_active, :is_logical_deleted])
   end
 end
