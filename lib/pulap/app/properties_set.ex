@@ -4,7 +4,7 @@ defmodule Pulap.App.PropertiesSet do
   alias Pulap.App.PropertiesSet
 
 
-  schema "properties_sets" do
+  schema "property_sets" do
     field :description, :string
     field :holder_id, Ecto.UUID
     field :is_active, :boolean, default: false

@@ -2,7 +2,7 @@ defmodule Pulap.Repo.Migrations.CreatePropertiesSet do
   use Ecto.Migration
 
   def change do
-    create table(:properties_sets, primary_key: false) do
+    create table(:property_sets, primary_key: false) do
       add :id, :binary_id, primary_key: true
       add :name, :string
       add :description, :string
@@ -15,8 +15,8 @@ defmodule Pulap.Repo.Migrations.CreatePropertiesSet do
       timestamps()
     end
 
-    create index(:properties_sets, [:created_by_id])
-    create index(:properties_sets, [:updated_by_id])
+    create index(:property_sets, [:created_by_id])
+    create index(:property_sets, [:updated_by_id])
 
   end
 end

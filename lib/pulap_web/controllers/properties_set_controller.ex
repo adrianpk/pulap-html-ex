@@ -5,8 +5,8 @@ defmodule PulapWeb.PropertiesSetController do
   alias Pulap.App.PropertiesSet
 
   def index(conn, _params) do
-    properties_sets = App.list_properties_sets()
-    render(conn, "index.html", properties_sets: properties_sets)
+    property_sets = App.list_property_sets()
+    render(conn, "index.html", property_sets: property_sets)
   end
 
   def new(conn, _params) do

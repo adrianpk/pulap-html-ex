@@ -13,7 +13,7 @@ defmodule PulapWeb.PlanSubscriptionsControllerTest do
   end
 
   describe "index" do
-    test "lists all plans_subscriptions", %{conn: conn} do
+    test "lists all plan_subscriptions", %{conn: conn} do
       conn = get conn, plan_subscriptions_path(conn, :index)
       assert html_response(conn, 200) =~ "Listing Plans subscriptions"
     end

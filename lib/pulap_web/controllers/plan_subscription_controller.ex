@@ -5,8 +5,8 @@ defmodule PulapWeb.PlanSubscriptionController do
   alias Pulap.App.PlanSubscription
 
   def index(conn, _params) do
-    plans_subscriptions = App.list_plans_subscriptions()
-    render(conn, "index.html", plans_subscriptions: plans_subscriptions)
+    plan_subscriptions = App.list_plan_subscriptions()
+    render(conn, "index.html", plan_subscriptions: plan_subscriptions)
   end
 
   def new(conn, _params) do

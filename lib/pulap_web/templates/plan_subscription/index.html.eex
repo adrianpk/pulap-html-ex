@@ -15,7 +15,7 @@
     </tr>
   </thead>
   <tbody>
-<%= for plan_subscription <- @plans_subscriptions do %>
+<%= for plan_subscription <- @plan_subscriptions do %>
     <tr>
       <td><%= plan_subscription.id %></td>
       <td><%= plan_subscription.name %></td>

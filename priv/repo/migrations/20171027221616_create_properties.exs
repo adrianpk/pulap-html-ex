@@ -4,7 +4,7 @@ defmodule Pulap.Repo.Migrations.CreateProperties do
   def change do
     create table(:properties, primary_key: false) do
       add :id, :binary_id, primary_key: true
-      add :properties_set_id, references(:properties_sets, type: :binary_id, on_delete: :nothing)
+      add :properties_set_id, references(:property_sets, type: :binary_id, on_delete: :nothing)
       add :properties_set_name, :string
       add :name, :string
       add :description, :string

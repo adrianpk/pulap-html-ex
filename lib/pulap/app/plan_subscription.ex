@@ -4,7 +4,7 @@ defmodule Pulap.App.PlanSubscription do
   alias Pulap.App.PlanSubscription
 
 
-  schema "plans_subscriptions" do
+  schema "plan_subscriptions" do
     field :description, :string
     field :ends_at, :utc_datetime
     field :is_active, :boolean, default: false
