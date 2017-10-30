@@ -75,7 +75,7 @@ defmodule Pulap.AppTest do
     end
   end
 
-  describe "properties_sets" do
+  describe "property_sets" do
     alias Pulap.App.PropertiesSet
 
     @valid_attrs %{description: "some description", holder_id: "7488a646-e31f-11e4-aace-600308960662", id: "7488a646-e31f-11e4-aace-600308960662", is_active: true, is_logical_deleted: true, name: "some name", started_at: "2010-04-17 14:00:00.000000Z"}
@@ -91,9 +91,9 @@ defmodule Pulap.AppTest do
       properties_set
     end
 
-    test "list_properties_sets/0 returns all properties_sets" do
+    test "list_property_sets/0 returns all property_sets" do
       properties_set = properties_set_fixture()
-      assert App.list_properties_sets() == [properties_set]
+      assert App.list_property_sets() == [properties_set]
     end
 
     test "get_properties_set!/1 returns the properties_set with given id" do
@@ -239,7 +239,7 @@ defmodule Pulap.AppTest do
     end
   end
 
-  describe "plans_subscriptions" do
+  describe "plan_subscriptions" do
     alias Pulap.App.PlanSubscriptions
 
     @valid_attrs %{description: "some description", ends_at: "2010-04-17 14:00:00.000000Z", id: "7488a646-e31f-11e4-aace-600308960662", is_active: true, is_logical_deleted: true, name: "some name", started_at: "2010-04-17 14:00:00.000000Z"}
@@ -255,9 +255,9 @@ defmodule Pulap.AppTest do
       plan_subscriptions
     end
 
-    test "list_plans_subscriptions/0 returns all plans_subscriptions" do
+    test "list_plan_subscriptions/0 returns all plan_subscriptions" do
       plan_subscriptions = plan_subscriptions_fixture()
-      assert App.list_plans_subscriptions() == [plan_subscriptions]
+      assert App.list_plan_subscriptions() == [plan_subscriptions]
     end
 
     test "get_plan_subscriptions!/1 returns the plan_subscriptions with given id" do
@@ -311,7 +311,7 @@ defmodule Pulap.AppTest do
     end
   end
 
-  describe "plans_subscriptions" do
+  describe "plan_subscriptions" do
     alias Pulap.App.PlanSubscription
 
     @valid_attrs %{description: "some description", ends_at: "2010-04-17 14:00:00.000000Z", id: "7488a646-e31f-11e4-aace-600308960662", is_active: true, is_logical_deleted: true, name: "some name", started_at: "2010-04-17 14:00:00.000000Z"}
@@ -327,9 +327,9 @@ defmodule Pulap.AppTest do
       plan_subscription
     end
 
-    test "list_plans_subscriptions/0 returns all plans_subscriptions" do
+    test "list_plan_subscriptions/0 returns all plan_subscriptions" do
       plan_subscription = plan_subscription_fixture()
-      assert App.list_plans_subscriptions() == [plan_subscription]
+      assert App.list_plan_subscriptions() == [plan_subscription]
     end
 
     test "get_plan_subscription!/1 returns the plan_subscription with given id" do
@@ -452,6 +452,82 @@ defmodule Pulap.AppTest do
     test "change_plan/1 returns a plan changeset" do
       plan = plan_fixture()
       assert %Ecto.Changeset{} = App.change_plan(plan)
+    end
+  end
+
+  describe "keyvalues" do
+    alias Pulap.App.KeyValue
+
+    @valid_attrs %{is_active: true, is_logical_deleted: true, key: "some key", key_group: "some key_group", key_subgroup: "some key_subgroup", locale: "some locale", position: 42, set: "some set", value: "some value"}
+    @update_attrs %{is_active: false, is_logical_deleted: false, key: "some updated key", key_group: "some updated key_group", key_subgroup: "some updated key_subgroup", locale: "some updated locale", position: 43, set: "some updated set", value: "some updated value"}
+    @invalid_attrs %{is_active: nil, is_logical_deleted: nil, key: nil, key_group: nil, key_subgroup: nil, locale: nil, position: nil, set: nil, value: nil}
+
+    def key_value_fixture(attrs \\ %{}) do
+      {:ok, key_value} =
+        attrs
+        |> Enum.into(@valid_attrs)
+        |> App.create_key_value()
+
+      key_value
+    end
+
+    test "list_keyvalues/0 returns all keyvalues" do
+      key_value = key_value_fixture()
+      assert App.list_keyvalues() == [key_value]
+    end
+
+    test "get_key_value!/1 returns the key_value with given id" do
+      key_value = key_value_fixture()
+      assert App.get_key_value!(key_value.id) == key_value
+    end
+
+    test "create_key_value/1 with valid data creates a key_value" do
+      assert {:ok, %KeyValue{} = key_value} = App.create_key_value(@valid_attrs)
+      assert key_value.is_active == true
+      assert key_value.is_logical_deleted == true
+      assert key_value.key == "some key"
+      assert key_value.key_group == "some key_group"
+      assert key_value.key_subgroup == "some key_subgroup"
+      assert key_value.locale == "some locale"
+      assert key_value.position == 42
+      assert key_value.set == "some set"
+      assert key_value.value == "some value"
+    end
+
+    test "create_key_value/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = App.create_key_value(@invalid_attrs)
+    end
+
+    test "update_key_value/2 with valid data updates the key_value" do
+      key_value = key_value_fixture()
+      assert {:ok, key_value} = App.update_key_value(key_value, @update_attrs)
+      assert %KeyValue{} = key_value
+      assert key_value.is_active == false
+      assert key_value.is_logical_deleted == false
+      assert key_value.key == "some updated key"
+      assert key_value.key_group == "some updated key_group"
+      assert key_value.key_subgroup == "some updated key_subgroup"
+      assert key_value.locale == "some updated locale"
+      assert key_value.position == 43
+      assert key_value.set == "some updated set"
+      assert key_value.value == "some updated value"
+    end
+
+    test "update_key_value/2 with invalid data returns error changeset" do
+      key_value = key_value_fixture()
+      assert {:error, %Ecto.Changeset{}} = App.update_key_value(key_value, @invalid_attrs)
+      assert key_value == App.get_key_value!(key_value.id)
+    end
+
+    test "delete_key_value/1 deletes the key_value" do
+      key_value = key_value_fixture()
+      assert {:ok, %KeyValue{}} = App.delete_key_value(key_value)
+      assert_raise Ecto.NoResultsError, fn -> App.get_key_value!(key_value.id) end
+    end
+
+    test "change_key_value/1 returns a key_value changeset" do
+      key_value = key_value_fixture()
+      assert %Ecto.Changeset{} = App.change_key_value(key_value)
     end
   end
 end

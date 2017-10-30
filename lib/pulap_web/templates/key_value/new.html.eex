@@ -1,0 +1,5 @@
+<h2>New Key value</h2>
+
+<%= render "form.html", Map.put(assigns, :action, key_value_path(@conn, :create)) %>
+
+<span><%= link "Back", to: key_value_path(@conn, :index) %></span>

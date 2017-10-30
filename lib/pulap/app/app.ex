@@ -17,7 +17,7 @@ defmodule Pulap.App do
       [%PropertiesSet{}, ...]
 
   """
-  def list_properties_sets do
+  def list_property_sets do
     Repo.all(PropertiesSet)
   end
 
@@ -201,15 +201,15 @@ defmodule Pulap.App do
   alias Pulap.App.PlanSubscription
 
   @doc """
-  Returns the list of plans_subscriptions.
+  Returns the list of plan_subscriptions.
 
   ## Examples
 
-      iex> list_plans_subscriptions()
+      iex> list_plan_subscriptions()
       [%PlanSubscription{}, ...]
 
   """
-  def list_plans_subscriptions do
+  def list_plan_subscriptions do
     Repo.all(PlanSubscription)
   end
 
@@ -388,5 +388,101 @@ defmodule Pulap.App do
   """
   def change_plan(%Plan{} = plan) do
     Plan.changeset(plan, %{})
+  end
+
+  alias Pulap.App.KeyValue
+
+  @doc """
+  Returns the list of keyvalues.
+
+  ## Examples
+
+      iex> list_keyvalues()
+      [%KeyValue{}, ...]
+
+  """
+  def list_keyvalues do
+    Repo.all(KeyValue)
+  end
+
+  @doc """
+  Gets a single key_value.
+
+  Raises `Ecto.NoResultsError` if the Key value does not exist.
+
+  ## Examples
+
+      iex> get_key_value!(123)
+      %KeyValue{}
+
+      iex> get_key_value!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_key_value!(id), do: Repo.get!(KeyValue, id)
+
+  @doc """
+  Creates a key_value.
+
+  ## Examples
+
+      iex> create_key_value(%{field: value})
+      {:ok, %KeyValue{}}
+
+      iex> create_key_value(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_key_value(attrs \\ %{}) do
+    %KeyValue{}
+    |> KeyValue.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  @doc """
+  Updates a key_value.
+
+  ## Examples
+
+      iex> update_key_value(key_value, %{field: new_value})
+      {:ok, %KeyValue{}}
+
+      iex> update_key_value(key_value, %{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def update_key_value(%KeyValue{} = key_value, attrs) do
+    key_value
+    |> KeyValue.changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc """
+  Deletes a KeyValue.
+
+  ## Examples
+
+      iex> delete_key_value(key_value)
+      {:ok, %KeyValue{}}
+
+      iex> delete_key_value(key_value)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_key_value(%KeyValue{} = key_value) do
+    Repo.delete(key_value)
+  end
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking key_value changes.
+
+  ## Examples
+
+      iex> change_key_value(key_value)
+      %Ecto.Changeset{source: %KeyValue{}}
+
+  """
+  def change_key_value(%KeyValue{} = key_value) do
+    KeyValue.changeset(key_value, %{})
   end
 end

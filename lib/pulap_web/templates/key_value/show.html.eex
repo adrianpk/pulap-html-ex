@@ -1,0 +1,53 @@
+<h2>Show Key value</h2>
+
+<ul>
+
+  <li>
+    <strong>Set:</strong>
+    <%= @key_value.set %>
+  </li>
+
+  <li>
+    <strong>Key:</strong>
+    <%= @key_value.key %>
+  </li>
+
+  <li>
+    <strong>Value:</strong>
+    <%= @key_value.value %>
+  </li>
+
+  <li>
+    <strong>Key group:</strong>
+    <%= @key_value.key_group %>
+  </li>
+
+  <li>
+    <strong>Key subgroup:</strong>
+    <%= @key_value.key_subgroup %>
+  </li>
+
+  <li>
+    <strong>Locale:</strong>
+    <%= @key_value.locale %>
+  </li>
+
+  <li>
+    <strong>Position:</strong>
+    <%= @key_value.position %>
+  </li>
+
+  <li>
+    <strong>Is active:</strong>
+    <%= @key_value.is_active %>
+  </li>
+
+  <li>
+    <strong>Is logical deleted:</strong>
+    <%= @key_value.is_logical_deleted %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: key_value_path(@conn, :edit, @key_value) %></span>
+<span><%= link "Back", to: key_value_path(@conn, :index) %></span>

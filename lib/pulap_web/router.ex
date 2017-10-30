@@ -48,13 +48,16 @@ defmodule PulapWeb.Router do
     resources "/properties", PropertyController do
       # nested resources
     end
-    resources "/properties-set", PropertiesSetController do
+    resources "/property-sets", PropertiesSetController do
       # nested resources
     end
     resources "/plans", PlanController do
       # nested resources
     end
-    resources "/plans-subscriptions", PlanSubscriptionController do
+    resources "/plan-subscriptions", PlanSubscriptionController do
+      # nested resources
+    end
+    resources "/key-values", KeyValueController do
       # nested resources
     end
   end

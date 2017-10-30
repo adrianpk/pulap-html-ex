@@ -13,7 +13,7 @@ defmodule PulapWeb.PropertiesSetControllerTest do
   end
 
   describe "index" do
-    test "lists all properties_sets", %{conn: conn} do
+    test "lists all property_sets", %{conn: conn} do
       conn = get conn, properties_set_path(conn, :index)
       assert html_response(conn, 200) =~ "Listing Properties sets"
     end

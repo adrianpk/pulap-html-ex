@@ -1,0 +1,42 @@
+<h2>Listing Keyvalues</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Set</th>
+      <th>Key</th>
+      <th>Value</th>
+      <th>Key group</th>
+      <th>Key subgroup</th>
+      <th>Locale</th>
+      <th>Position</th>
+      <th>Is active</th>
+      <th>Is logical deleted</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for key_value <- @keyvalues do %>
+    <tr>
+      <td><%= key_value.set %></td>
+      <td><%= key_value.key %></td>
+      <td><%= key_value.value %></td>
+      <td><%= key_value.key_group %></td>
+      <td><%= key_value.key_subgroup %></td>
+      <td><%= key_value.locale %></td>
+      <td><%= key_value.position %></td>
+      <td><%= key_value.is_active %></td>
+      <td><%= key_value.is_logical_deleted %></td>
+
+      <td class="text-right">
+        <span><%= link "Show", to: key_value_path(@conn, :show, key_value), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Edit", to: key_value_path(@conn, :edit, key_value), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Delete", to: key_value_path(@conn, :delete, key_value), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Key value", to: key_value_path(@conn, :new) %></span>
