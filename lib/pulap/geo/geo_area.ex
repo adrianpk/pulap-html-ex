@@ -3,10 +3,10 @@ defmodule Pulap.Geo.GeoArea do
   import Ecto.Changeset
   alias Pulap.Geo.GeoArea
 
-
   schema "geo_areas" do
-    field :alt_name, :string
+    field :alternative_name, :string
     field :canonical_name, :string
+    field :canonical_name_loc, :string
     field :cards, :string
     field :dialing_code, :string
     field :geolocation, :float
@@ -14,9 +14,8 @@ defmodule Pulap.Geo.GeoArea do
     field :is_logical_deleted, :boolean, default: false
     field :is_main, :boolean, default: false
     field :locale, :string
-    field :locale_canonical_name, :string
-    field :locale_name, :string
     field :name, :string
+    field :name_loc, :string
     field :position, :integer
     field :zip_code, :string
     field :parent_id, :id
@@ -29,7 +28,7 @@ defmodule Pulap.Geo.GeoArea do
   @doc false
   def changeset(%GeoArea{} = geo_area, attrs) do
     geo_area
-    |> cast(attrs, [:name, :alt_name, :locale_name, :canonical_name, :locale_canonical_name, :dialing_code, :zip_code, :is_main, :cards, :geolocation, :locale, :position, :is_active, :is_logical_deleted])
-    |> validate_required([:name, :alt_name, :locale_name, :canonical_name, :locale_canonical_name, :dialing_code, :zip_code, :is_main, :cards, :geolocation, :locale, :position, :is_active, :is_logical_deleted])
+    |> cast(attrs, [:name, :alternative_name, :name_loc, :canonical_name, :canonical_name_locale, :dialing_code, :zip_code, :is_main, :cards, :geolocation, :locale, :position, :is_active, :is_logical_deleted])
+    |> validate_required([:name, :alternative_name, :name_loc, :canonical_name, :canonical_name_locale, :dialing_code, :zip_code, :is_main, :cards, :geolocation, :locale, :position, :is_active, :is_logical_deleted])
   end
 end
