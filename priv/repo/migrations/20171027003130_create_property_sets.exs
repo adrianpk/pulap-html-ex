@@ -4,7 +4,7 @@ defmodule Pulap.Repo.Migrations.CreatePropertiesSet do
   def change do
     create table(:property_sets, primary_key: false) do
       add :id, :binary_id, primary_key: true
-      add :name, :string
+      add :name, :string, size: 32, null: false
       add :description, :string
       add :holder_id, :uuid
       add :is_active, :boolean, default: false, null: false
@@ -15,6 +15,7 @@ defmodule Pulap.Repo.Migrations.CreatePropertiesSet do
       timestamps()
     end
 
+    create unique_index(:property_sets, [:name])
     create index(:property_sets, [:created_by_id])
     create index(:property_sets, [:updated_by_id])
 

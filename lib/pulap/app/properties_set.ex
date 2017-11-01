@@ -10,7 +10,8 @@ defmodule Pulap.App.PropertiesSet do
     field :is_active, :boolean, default: false
     field :is_logical_deleted, :boolean, default: false
     field :name, :string
-    field :created_by, :id
+    field :created_by_id, :id
+    field :updated_by_id, :id
 
     timestamps()
   end

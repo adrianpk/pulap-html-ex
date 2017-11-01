@@ -4,8 +4,8 @@ defmodule Pulap.Repo.Migrations.CreatePlans do
   def change do
     create table(:plans, primary_key: false) do
       add :id, :binary_id, primary_key: true
-      add :name, :string
-      add :description, :string
+      add :name, :string, size: 32, null: false
+      add :description, :string, size: 255
       add :started_at, :utc_datetime
       add :ends_at, :utc_datetime
       add :is_active, :boolean, default: false, null: false
@@ -17,7 +17,7 @@ defmodule Pulap.Repo.Migrations.CreatePlans do
       timestamps()
     end
 
-    create index(:plans, [:organization_id])
+    create unique_index(:plans, [:organization_id, :name])
     create index(:plans, [:created_by_id])
     create index(:plans, [:updated_by_id])
   end

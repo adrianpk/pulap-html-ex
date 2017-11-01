@@ -3,12 +3,13 @@ defmodule Pulap.Repo.Migrations.CreateKeyvalues do
 
   def change do
     create table(:key_values, primary_key: false) do
-      add :set, :string
-      add :key, :string
-      add :value, :string
-      add :key_group, :string
-      add :key_subgroup, :string
-      add :locale, :string
+      add :id, :binary_id, primary_key: true
+      add :set, :string, size: 32
+      add :key, :string, size: 255, null: false
+      add :value, :string, size: 255, null: false
+      add :key_group, :string, size: 32
+      add :key_subgroup, :string, size: 32
+      add :locale, :string, size: 5
       add :position, :integer
       add :is_active, :boolean, default: false, null: false
       add :is_logical_deleted, :boolean, default: false, null: false

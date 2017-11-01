@@ -6,9 +6,9 @@ defmodule Pulap.Repo.Migrations.CreateProperties do
       add :id, :binary_id, primary_key: true
       add :properties_set_id, references(:property_sets, type: :binary_id, on_delete: :nothing)
       add :properties_set_name, :string
-      add :name, :string
+      add :name, :string, size: 32, null: false
       add :description, :string
-      add :property_data_type, :string
+      add :property_data_type, :string, size: 32, null: false
       add :boolean, :boolean, default: false, null: false
       add :date, :date
       add :datetime, :naive_datetime
@@ -16,7 +16,7 @@ defmodule Pulap.Repo.Migrations.CreateProperties do
       add :float, :float
       add :geolocation, :float
       add :integer, :integer
-      add :string, :string
+      add :string, :string, size: 255
       add :time, :time
       add :uuid, :uuid
       add :is_active, :boolean, default: false, null: false
@@ -27,7 +27,7 @@ defmodule Pulap.Repo.Migrations.CreateProperties do
       timestamps()
     end
 
-    create index(:properties, [:properties_set_id])
+    create unique_index(:properties, [:properties_set_id, :name])
     create index(:properties, [:created_by_id])
     create index(:properties, [:updated_by_id])
 
