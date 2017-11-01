@@ -5,6 +5,8 @@ defmodule Pulap.Repo.Migrations.CreateGeoAreas do
   def up do
     create table(:geo_areas, primary_key: false) do
       add :id, :binary_id, primary_key: true
+      add :adm_level, :string, size: 8, null: false
+      add :adm_level_type, :string, size: 16, null: false
       add :name, :string, size: 64, null: false
       add :alt_name, :string, size: 64
       add :locale_name, :string, size: 64
