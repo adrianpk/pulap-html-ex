@@ -1,0 +1,78 @@
+<h2>Show Geo area</h2>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @geo_area.name %>
+  </li>
+
+  <li>
+    <strong>Alt name:</strong>
+    <%= @geo_area.alt_name %>
+  </li>
+
+  <li>
+    <strong>Locale name:</strong>
+    <%= @geo_area.locale_name %>
+  </li>
+
+  <li>
+    <strong>Canonical name:</strong>
+    <%= @geo_area.canonical_name %>
+  </li>
+
+  <li>
+    <strong>Locale canonical name:</strong>
+    <%= @geo_area.locale_canonical_name %>
+  </li>
+
+  <li>
+    <strong>Dialing code:</strong>
+    <%= @geo_area.dialing_code %>
+  </li>
+
+  <li>
+    <strong>Zip code:</strong>
+    <%= @geo_area.zip_code %>
+  </li>
+
+  <li>
+    <strong>Is main:</strong>
+    <%= @geo_area.is_main %>
+  </li>
+
+  <li>
+    <strong>Cards:</strong>
+    <%= @geo_area.cards %>
+  </li>
+
+  <li>
+    <strong>Geolocation:</strong>
+    <%= @geo_area.geolocation %>
+  </li>
+
+  <li>
+    <strong>Locale:</strong>
+    <%= @geo_area.locale %>
+  </li>
+
+  <li>
+    <strong>Position:</strong>
+    <%= @geo_area.position %>
+  </li>
+
+  <li>
+    <strong>Is active:</strong>
+    <%= @geo_area.is_active %>
+  </li>
+
+  <li>
+    <strong>Is logical deleted:</strong>
+    <%= @geo_area.is_logical_deleted %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: geo_area_path(@conn, :edit, @geo_area) %></span>
+<span><%= link "Back", to: geo_area_path(@conn, :index) %></span>

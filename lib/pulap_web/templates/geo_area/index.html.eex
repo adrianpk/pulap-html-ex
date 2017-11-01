@@ -1,0 +1,52 @@
+<h2>Listing Geo areas</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Alt name</th>
+      <th>Locale name</th>
+      <th>Canonical name</th>
+      <th>Locale canonical name</th>
+      <th>Dialing code</th>
+      <th>Zip code</th>
+      <th>Is main</th>
+      <th>Cards</th>
+      <th>Geolocation</th>
+      <th>Locale</th>
+      <th>Position</th>
+      <th>Is active</th>
+      <th>Is logical deleted</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for geo_area <- @geo_areas do %>
+    <tr>
+      <td><%= geo_area.name %></td>
+      <td><%= geo_area.alt_name %></td>
+      <td><%= geo_area.locale_name %></td>
+      <td><%= geo_area.canonical_name %></td>
+      <td><%= geo_area.locale_canonical_name %></td>
+      <td><%= geo_area.dialing_code %></td>
+      <td><%= geo_area.zip_code %></td>
+      <td><%= geo_area.is_main %></td>
+      <td><%= geo_area.cards %></td>
+      <td><%= geo_area.geolocation %></td>
+      <td><%= geo_area.locale %></td>
+      <td><%= geo_area.position %></td>
+      <td><%= geo_area.is_active %></td>
+      <td><%= geo_area.is_logical_deleted %></td>
+
+      <td class="text-right">
+        <span><%= link "Show", to: geo_area_path(@conn, :show, geo_area), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Edit", to: geo_area_path(@conn, :edit, geo_area), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Delete", to: geo_area_path(@conn, :delete, geo_area), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Geo area", to: geo_area_path(@conn, :new) %></span>

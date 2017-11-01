@@ -1,0 +1,95 @@
+<%= form_for @changeset, @action, fn f -> %>
+  <%= if @changeset.action do %>
+    <div class="alert alert-danger">
+      <p>Oops, something went wrong! Please check the errors below.</p>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= label f, :name, class: "control-label" %>
+    <%= text_input f, :name, class: "form-control" %>
+    <%= error_tag f, :name %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :alt_name, class: "control-label" %>
+    <%= text_input f, :alt_name, class: "form-control" %>
+    <%= error_tag f, :alt_name %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :locale_name, class: "control-label" %>
+    <%= text_input f, :locale_name, class: "form-control" %>
+    <%= error_tag f, :locale_name %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :canonical_name, class: "control-label" %>
+    <%= text_input f, :canonical_name, class: "form-control" %>
+    <%= error_tag f, :canonical_name %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :locale_canonical_name, class: "control-label" %>
+    <%= text_input f, :locale_canonical_name, class: "form-control" %>
+    <%= error_tag f, :locale_canonical_name %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :dialing_code, class: "control-label" %>
+    <%= text_input f, :dialing_code, class: "form-control" %>
+    <%= error_tag f, :dialing_code %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :zip_code, class: "control-label" %>
+    <%= text_input f, :zip_code, class: "form-control" %>
+    <%= error_tag f, :zip_code %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :is_main, class: "control-label" %>
+    <%= checkbox f, :is_main, class: "checkbox" %>
+    <%= error_tag f, :is_main %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :cards, class: "control-label" %>
+    <%= text_input f, :cards, class: "form-control" %>
+    <%= error_tag f, :cards %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :geolocation, class: "control-label" %>
+    <%= number_input f, :geolocation, step: "any", class: "form-control" %>
+    <%= error_tag f, :geolocation %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :locale, class: "control-label" %>
+    <%= text_input f, :locale, class: "form-control" %>
+    <%= error_tag f, :locale %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :position, class: "control-label" %>
+    <%= number_input f, :position, class: "form-control" %>
+    <%= error_tag f, :position %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :is_active, class: "control-label" %>
+    <%= checkbox f, :is_active, class: "checkbox" %>
+    <%= error_tag f, :is_active %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :is_logical_deleted, class: "control-label" %>
+    <%= checkbox f, :is_logical_deleted, class: "checkbox" %>
+    <%= error_tag f, :is_logical_deleted %>
+  </div>
+
+  <div class="form-group">
+    <%= submit "Submit", class: "btn btn-primary" %>
+  </div>
+<% end %>

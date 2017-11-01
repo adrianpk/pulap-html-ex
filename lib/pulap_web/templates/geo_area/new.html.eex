@@ -1,0 +1,5 @@
+<h2>New Geo area</h2>
+
+<%= render "form.html", Map.put(assigns, :action, geo_area_path(@conn, :create)) %>
+
+<span><%= link "Back", to: geo_area_path(@conn, :index) %></span>
