@@ -14,7 +14,7 @@ defmodule Pulap.Repo.Migrations.CreateGeoAreas do
       add :dialing_code, :string
       add :zip_code, :string
       add :is_main, :boolean, default: false, null: false
-      add :cards, :string
+      add :cards, :jsonb
     end
 
     execute("SELECT AddGeometryColumn ('geo_areas', 'geolocation', 4326, 'POINT', 2);")
