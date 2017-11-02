@@ -455,7 +455,7 @@ defmodule Pulap.AppTest do
     end
   end
 
-  describe "keyvalues" do
+  describe "key_values" do
     alias Pulap.App.KeyValue
 
     @valid_attrs %{is_active: true, is_logical_deleted: true, key: "some key", key_group: "some key_group", key_subgroup: "some key_subgroup", locale: "some locale", position: 42, set: "some set", value: "some value"}
@@ -471,9 +471,9 @@ defmodule Pulap.AppTest do
       key_value
     end
 
-    test "list_keyvalues/0 returns all keyvalues" do
+    test "list_key_values/0 returns all key_values" do
       key_value = key_value_fixture()
-      assert App.list_keyvalues() == [key_value]
+      assert App.list_key_values() == [key_value]
     end
 
     test "get_key_value!/1 returns the key_value with given id" do

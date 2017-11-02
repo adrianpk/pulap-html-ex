@@ -17,7 +17,7 @@
     </tr>
   </thead>
   <tbody>
-<%= for key_value <- @keyvalues do %>
+<%= for key_value <- @key_values do %>
     <tr>
       <td><%= key_value.set %></td>
       <td><%= key_value.key %></td>

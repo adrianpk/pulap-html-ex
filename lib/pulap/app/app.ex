@@ -393,15 +393,15 @@ defmodule Pulap.App do
   alias Pulap.App.KeyValue
 
   @doc """
-  Returns the list of keyvalues.
+  Returns the list of key_values.
 
   ## Examples
 
-      iex> list_keyvalues()
+      iex> list_key_values()
       [%KeyValue{}, ...]
 
   """
-  def list_keyvalues do
+  def list_key_values do
     Repo.all(KeyValue)
   end
 
