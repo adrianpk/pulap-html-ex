@@ -1,0 +1,120 @@
+<h2>Listing Real estates</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Short description</th>
+      <th>Description</th>
+      <th>Geo area canonical</th>
+      <th>Geo area loc</th>
+      <th>Street</th>
+      <th>Street number</th>
+      <th>Block</th>
+      <th>Floor</th>
+      <th>Apartment number</th>
+      <th>Property type val en</th>
+      <th>Property type val loc</th>
+      <th>Total area m2</th>
+      <th>Indoor area m2</th>
+      <th>Price</th>
+      <th>Price per square meter</th>
+      <th>Suggested installment loan</th>
+      <th>Currency code</th>
+      <th>Currency symbol</th>
+      <th>Type of building val en</th>
+      <th>Type of building val loc</th>
+      <th>Year of construction</th>
+      <th>Room height cm</th>
+      <th>Number of rooms</th>
+      <th>Number of bedroms</th>
+      <th>Kitchen type val en</th>
+      <th>Kitchen type val loc</th>
+      <th>Number of bathrooms</th>
+      <th>Bathroom area m2</th>
+      <th>Heating type val en</th>
+      <th>Heating type val loc</th>
+      <th>Accessible without stairs</th>
+      <th>Elevator</th>
+      <th>Terrace</th>
+      <th>Backyard</th>
+      <th>Balcony</th>
+      <th>Number of balconies</th>
+      <th>Furniture set</th>
+      <th>House equipment</th>
+      <th>House equipment description</th>
+      <th>Active</th>
+      <th>Logical deleted</th>
+      <th>Cards</th>
+      <th>Geolocation</th>
+      <th>Locale</th>
+      <th>Position</th>
+      <th>Is active</th>
+      <th>Is logical deleted</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for real_estate <- @real_estates do %>
+    <tr>
+      <td><%= real_estate.name %></td>
+      <td><%= real_estate.short_description %></td>
+      <td><%= real_estate.description %></td>
+      <td><%= real_estate.geo_area_canonical %></td>
+      <td><%= real_estate.geo_area_loc %></td>
+      <td><%= real_estate.street %></td>
+      <td><%= real_estate.street_number %></td>
+      <td><%= real_estate.block %></td>
+      <td><%= real_estate.floor %></td>
+      <td><%= real_estate.apartment_number %></td>
+      <td><%= real_estate.property_type_val_en %></td>
+      <td><%= real_estate.property_type_val_loc %></td>
+      <td><%= real_estate.total_area_m2 %></td>
+      <td><%= real_estate.indoor_area_m2 %></td>
+      <td><%= real_estate.price %></td>
+      <td><%= real_estate.price_per_square_meter %></td>
+      <td><%= real_estate.suggested_installment_loan %></td>
+      <td><%= real_estate.currency_code %></td>
+      <td><%= real_estate.currency_symbol %></td>
+      <td><%= real_estate.type_of_building_val_en %></td>
+      <td><%= real_estate.type_of_building_val_loc %></td>
+      <td><%= real_estate.year_of_construction %></td>
+      <td><%= real_estate.room_height_cm %></td>
+      <td><%= real_estate.number_of_rooms %></td>
+      <td><%= real_estate.number_of_bedroms %></td>
+      <td><%= real_estate.kitchen_type_val_en %></td>
+      <td><%= real_estate.kitchen_type_val_loc %></td>
+      <td><%= real_estate.number_of_bathrooms %></td>
+      <td><%= real_estate.bathroom_area_m2 %></td>
+      <td><%= real_estate.heating_type_val_en %></td>
+      <td><%= real_estate.heating_type_val_loc %></td>
+      <td><%= real_estate.accessible_without_stairs %></td>
+      <td><%= real_estate.elevator %></td>
+      <td><%= real_estate.terrace %></td>
+      <td><%= real_estate.backyard %></td>
+      <td><%= real_estate.balcony %></td>
+      <td><%= real_estate.number_of_balconies %></td>
+      <td><%= real_estate.furniture_set %></td>
+      <td><%= real_estate.house_equipment %></td>
+      <td><%= real_estate.house_equipment_description %></td>
+      <td><%= real_estate.active %></td>
+      <td><%= real_estate.logical_deleted %></td>
+      <td><%= real_estate.cards %></td>
+      <td><%= real_estate.geolocation %></td>
+      <td><%= real_estate.locale %></td>
+      <td><%= real_estate.position %></td>
+      <td><%= real_estate.is_active %></td>
+      <td><%= real_estate.is_logical_deleted %></td>
+
+      <td class="text-right">
+        <span><%= link "Show", to: real_estate_path(@conn, :show, real_estate), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Edit", to: real_estate_path(@conn, :edit, real_estate), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Delete", to: real_estate_path(@conn, :delete, real_estate), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Real estate", to: real_estate_path(@conn, :new) %></span>

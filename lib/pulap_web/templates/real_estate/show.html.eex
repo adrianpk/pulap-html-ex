@@ -1,0 +1,243 @@
+<h2>Show Real estate</h2>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @real_estate.name %>
+  </li>
+
+  <li>
+    <strong>Short description:</strong>
+    <%= @real_estate.short_description %>
+  </li>
+
+  <li>
+    <strong>Description:</strong>
+    <%= @real_estate.description %>
+  </li>
+
+  <li>
+    <strong>Geo area canonical:</strong>
+    <%= @real_estate.geo_area_canonical %>
+  </li>
+
+  <li>
+    <strong>Geo area loc:</strong>
+    <%= @real_estate.geo_area_loc %>
+  </li>
+
+  <li>
+    <strong>Street:</strong>
+    <%= @real_estate.street %>
+  </li>
+
+  <li>
+    <strong>Street number:</strong>
+    <%= @real_estate.street_number %>
+  </li>
+
+  <li>
+    <strong>Block:</strong>
+    <%= @real_estate.block %>
+  </li>
+
+  <li>
+    <strong>Floor:</strong>
+    <%= @real_estate.floor %>
+  </li>
+
+  <li>
+    <strong>Apartment number:</strong>
+    <%= @real_estate.apartment_number %>
+  </li>
+
+  <li>
+    <strong>Property type val en:</strong>
+    <%= @real_estate.property_type_val_en %>
+  </li>
+
+  <li>
+    <strong>Property type val loc:</strong>
+    <%= @real_estate.property_type_val_loc %>
+  </li>
+
+  <li>
+    <strong>Total area m2:</strong>
+    <%= @real_estate.total_area_m2 %>
+  </li>
+
+  <li>
+    <strong>Indoor area m2:</strong>
+    <%= @real_estate.indoor_area_m2 %>
+  </li>
+
+  <li>
+    <strong>Price:</strong>
+    <%= @real_estate.price %>
+  </li>
+
+  <li>
+    <strong>Price per square meter:</strong>
+    <%= @real_estate.price_per_square_meter %>
+  </li>
+
+  <li>
+    <strong>Suggested installment loan:</strong>
+    <%= @real_estate.suggested_installment_loan %>
+  </li>
+
+  <li>
+    <strong>Currency val:</strong>
+    <%= @real_estate.currency_val %>
+  </li>
+
+  <li>
+    <strong>Type of building val en:</strong>
+    <%= @real_estate.type_of_building_val_en %>
+  </li>
+
+  <li>
+    <strong>Type of building val loc:</strong>
+    <%= @real_estate.type_of_building_val_loc %>
+  </li>
+
+  <li>
+    <strong>Year of construction:</strong>
+    <%= @real_estate.year_of_construction %>
+  </li>
+
+  <li>
+    <strong>Room height cm:</strong>
+    <%= @real_estate.room_height_cm %>
+  </li>
+
+  <li>
+    <strong>Number of rooms:</strong>
+    <%= @real_estate.number_of_rooms %>
+  </li>
+
+  <li>
+    <strong>Number of bedroms:</strong>
+    <%= @real_estate.number_of_bedroms %>
+  </li>
+
+  <li>
+    <strong>Kitchen type val en:</strong>
+    <%= @real_estate.kitchen_type_val_en %>
+  </li>
+
+  <li>
+    <strong>Kitchen type val loc:</strong>
+    <%= @real_estate.kitchen_type_val_loc %>
+  </li>
+
+  <li>
+    <strong>Number of bathrooms:</strong>
+    <%= @real_estate.number_of_bathrooms %>
+  </li>
+
+  <li>
+    <strong>Bathroom area m2:</strong>
+    <%= @real_estate.bathroom_area_m2 %>
+  </li>
+
+  <li>
+    <strong>Heating type val en:</strong>
+    <%= @real_estate.heating_type_val_en %>
+  </li>
+
+  <li>
+    <strong>Heating type val loc:</strong>
+    <%= @real_estate.heating_type_val_loc %>
+  </li>
+
+  <li>
+    <strong>Accessible without stairs:</strong>
+    <%= @real_estate.accessible_without_stairs %>
+  </li>
+
+  <li>
+    <strong>Elevator:</strong>
+    <%= @real_estate.elevator %>
+  </li>
+
+  <li>
+    <strong>Terrace:</strong>
+    <%= @real_estate.terrace %>
+  </li>
+
+  <li>
+    <strong>Backyard:</strong>
+    <%= @real_estate.backyard %>
+  </li>
+
+  <li>
+    <strong>Balcony:</strong>
+    <%= @real_estate.balcony %>
+  </li>
+
+  <li>
+    <strong>Number of balconies:</strong>
+    <%= @real_estate.number_of_balconies %>
+  </li>
+
+  <li>
+    <strong>Furniture set:</strong>
+    <%= @real_estate.furniture_set %>
+  </li>
+
+  <li>
+    <strong>House equipment:</strong>
+    <%= @real_estate.house_equipment %>
+  </li>
+
+  <li>
+    <strong>House equipment description:</strong>
+    <%= @real_estate.house_equipment_description %>
+  </li>
+
+  <li>
+    <strong>Active:</strong>
+    <%= @real_estate.active %>
+  </li>
+
+  <li>
+    <strong>Logical deleted:</strong>
+    <%= @real_estate.logical_deleted %>
+  </li>
+
+  <li>
+    <strong>Cards:</strong>
+    <%= @real_estate.cards %>
+  </li>
+
+  <li>
+    <strong>Geolocation:</strong>
+    <%= @real_estate.geolocation %>
+  </li>
+
+  <li>
+    <strong>Locale:</strong>
+    <%= @real_estate.locale %>
+  </li>
+
+  <li>
+    <strong>Position:</strong>
+    <%= @real_estate.position %>
+  </li>
+
+  <li>
+    <strong>Is active:</strong>
+    <%= @real_estate.is_active %>
+  </li>
+
+  <li>
+    <strong>Is logical deleted:</strong>
+    <%= @real_estate.is_logical_deleted %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: real_estate_path(@conn, :edit, @real_estate) %></span>
+<span><%= link "Back", to: real_estate_path(@conn, :index) %></span>
