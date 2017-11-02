@@ -63,6 +63,12 @@ defmodule PulapWeb.Router do
     resources "/geo-areas", GeoAreaController do
       # nested resources
     end
+    resources "/currencies", CurrencyController do
+      # nested resources
+    end
+    resources "/real-estate", RealEstateController do
+      # nested resources
+    end
   end
 
   # Other scopes may use custom stacks.
