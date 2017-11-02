@@ -5,8 +5,8 @@ defmodule PulapWeb.KeyValueController do
   alias Pulap.App.KeyValue
 
   def index(conn, _params) do
-    keyvalues = App.list_keyvalues()
-    render(conn, "index.html", keyvalues: keyvalues)
+    key_values = App.list_key_values()
+    render(conn, "index.html", key_values: key_values)
   end
 
   def new(conn, _params) do
