@@ -1,0 +1,38 @@
+<h2>Listing Currencies</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Code</th>
+      <th>Num code</th>
+      <th>Minor unit</th>
+      <th>Name</th>
+      <th>Icon</th>
+      <th>Is active</th>
+      <th>Is logical deleted</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for currency <- @currencies do %>
+    <tr>
+      <td><%= currency.code %></td>
+      <td><%= currency.num_code %></td>
+      <td><%= currency.minor_unit %></td>
+      <td><%= currency.name %></td>
+      <td><%= currency.icon %></td>
+      <td><%= currency.is_active %></td>
+      <td><%= currency.is_logical_deleted %></td>
+
+      <td class="text-right">
+        <span><%= link "Show", to: currency_path(@conn, :show, currency), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Edit", to: currency_path(@conn, :edit, currency), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Delete", to: currency_path(@conn, :delete, currency), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Currency", to: currency_path(@conn, :new) %></span>

@@ -1,0 +1,43 @@
+<h2>Show Currency</h2>
+
+<ul>
+
+  <li>
+    <strong>Code:</strong>
+    <%= @currency.code %>
+  </li>
+
+  <li>
+    <strong>Num code:</strong>
+    <%= @currency.num_code %>
+  </li>
+
+  <li>
+    <strong>Minor unit:</strong>
+    <%= @currency.minor_unit %>
+  </li>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @currency.name %>
+  </li>
+
+  <li>
+    <strong>Icon:</strong>
+    <%= @currency.icon %>
+  </li>
+
+  <li>
+    <strong>Is active:</strong>
+    <%= @currency.is_active %>
+  </li>
+
+  <li>
+    <strong>Is logical deleted:</strong>
+    <%= @currency.is_logical_deleted %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: currency_path(@conn, :edit, @currency) %></span>
+<span><%= link "Back", to: currency_path(@conn, :index) %></span>
