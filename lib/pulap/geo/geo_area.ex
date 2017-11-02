@@ -28,7 +28,7 @@ defmodule Pulap.Geo.GeoArea do
   @doc false
   def changeset(%GeoArea{} = geo_area, attrs) do
     geo_area
-    |> cast(attrs, [:name, :alternative_name, :name_loc, :canonical_name, :canonical_name_locale, :dialing_code, :zip_code, :is_main, :cards, :geolocation, :locale, :position, :is_active, :is_logical_deleted])
-    |> validate_required([:name, :alternative_name, :name_loc, :canonical_name, :canonical_name_locale, :dialing_code, :zip_code, :is_main, :cards, :geolocation, :locale, :position, :is_active, :is_logical_deleted])
+    |> cast(attrs, [:name, :alternative_name, :name_loc, :canonical_name, :canonical_name_loc, :dialing_code, :zip_code, :is_main, :cards, :geolocation, :locale, :position, :is_active, :is_logical_deleted])
+    |> validate_required([:name, :alternative_name, :name_loc, :canonical_name, :canonical_name_loc, :dialing_code, :zip_code, :is_main, :cards, :geolocation, :locale, :position, :is_active, :is_logical_deleted])
   end
 end
