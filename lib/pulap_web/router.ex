@@ -72,6 +72,9 @@ defmodule PulapWeb.Router do
     resources "/tenures", TenureController do
       # nested resources
     end
+    resources "/administratorships", AdministratorshipController do
+      # nested resources
+    end
   end
 
   # Other scopes may use custom stacks.

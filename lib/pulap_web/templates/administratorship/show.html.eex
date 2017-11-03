@@ -1,0 +1,28 @@
+<h2>Show Administratorship</h2>
+
+<ul>
+
+  <li>
+    <strong>Started at:</strong>
+    <%= @administratorship.started_at %>
+  </li>
+
+  <li>
+    <strong>Ends at:</strong>
+    <%= @administratorship.ends_at %>
+  </li>
+
+  <li>
+    <strong>Is active:</strong>
+    <%= @administratorship.is_active %>
+  </li>
+
+  <li>
+    <strong>Is logical deleted:</strong>
+    <%= @administratorship.is_logical_deleted %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: administratorship_path(@conn, :edit, @administratorship) %></span>
+<span><%= link "Back", to: administratorship_path(@conn, :index) %></span>

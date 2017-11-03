@@ -1,0 +1,5 @@
+<h2>New Administratorship</h2>
+
+<%= render "form.html", Map.put(assigns, :action, administratorship_path(@conn, :create)) %>
+
+<span><%= link "Back", to: administratorship_path(@conn, :index) %></span>
