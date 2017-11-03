@@ -197,4 +197,100 @@ defmodule Pulap.Biz do
   def change_currency(%Currency{} = currency) do
     Currency.changeset(currency, %{})
   end
+
+  alias Pulap.Biz.Tenure
+
+  @doc """
+  Returns the list of tenures.
+
+  ## Examples
+
+      iex> list_tenures()
+      [%Tenure{}, ...]
+
+  """
+  def list_tenures do
+    Repo.all(Tenure)
+  end
+
+  @doc """
+  Gets a single tenure.
+
+  Raises `Ecto.NoResultsError` if the Tenure does not exist.
+
+  ## Examples
+
+      iex> get_tenure!(123)
+      %Tenure{}
+
+      iex> get_tenure!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_tenure!(id), do: Repo.get!(Tenure, id)
+
+  @doc """
+  Creates a tenure.
+
+  ## Examples
+
+      iex> create_tenure(%{field: value})
+      {:ok, %Tenure{}}
+
+      iex> create_tenure(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_tenure(attrs \\ %{}) do
+    %Tenure{}
+    |> Tenure.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  @doc """
+  Updates a tenure.
+
+  ## Examples
+
+      iex> update_tenure(tenure, %{field: new_value})
+      {:ok, %Tenure{}}
+
+      iex> update_tenure(tenure, %{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def update_tenure(%Tenure{} = tenure, attrs) do
+    tenure
+    |> Tenure.changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc """
+  Deletes a Tenure.
+
+  ## Examples
+
+      iex> delete_tenure(tenure)
+      {:ok, %Tenure{}}
+
+      iex> delete_tenure(tenure)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_tenure(%Tenure{} = tenure) do
+    Repo.delete(tenure)
+  end
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking tenure changes.
+
+  ## Examples
+
+      iex> change_tenure(tenure)
+      %Ecto.Changeset{source: %Tenure{}}
+
+  """
+  def change_tenure(%Tenure{} = tenure) do
+    Tenure.changeset(tenure, %{})
+  end
 end

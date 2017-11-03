@@ -226,4 +226,74 @@ defmodule Pulap.BizTest do
       assert %Ecto.Changeset{} = Pulap.change_real_estate(real_estate)
     end
   end
+
+  describe "tenures" do
+    alias Pulap.Biz.Tenure
+
+    @valid_attrs %{ends_at: "2010-04-17 14:00:00.000000Z", is_active: true, is_logical_deleted: true, job_description: "some job_description", job_title: "some job_title", started_at: "2010-04-17 14:00:00.000000Z"}
+    @update_attrs %{ends_at: "2011-05-18 15:01:01.000000Z", is_active: false, is_logical_deleted: false, job_description: "some updated job_description", job_title: "some updated job_title", started_at: "2011-05-18 15:01:01.000000Z"}
+    @invalid_attrs %{ends_at: nil, is_active: nil, is_logical_deleted: nil, job_description: nil, job_title: nil, started_at: nil}
+
+    def tenure_fixture(attrs \\ %{}) do
+      {:ok, tenure} =
+        attrs
+        |> Enum.into(@valid_attrs)
+        |> Biz.create_tenure()
+
+      tenure
+    end
+
+    test "list_tenures/0 returns all tenures" do
+      tenure = tenure_fixture()
+      assert Biz.list_tenures() == [tenure]
+    end
+
+    test "get_tenure!/1 returns the tenure with given id" do
+      tenure = tenure_fixture()
+      assert Biz.get_tenure!(tenure.id) == tenure
+    end
+
+    test "create_tenure/1 with valid data creates a tenure" do
+      assert {:ok, %Tenure{} = tenure} = Biz.create_tenure(@valid_attrs)
+      assert tenure.ends_at == DateTime.from_naive!(~N[2010-04-17 14:00:00.000000Z], "Etc/UTC")
+      assert tenure.is_active == true
+      assert tenure.is_logical_deleted == true
+      assert tenure.job_description == "some job_description"
+      assert tenure.job_title == "some job_title"
+      assert tenure.started_at == DateTime.from_naive!(~N[2010-04-17 14:00:00.000000Z], "Etc/UTC")
+    end
+
+    test "create_tenure/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Biz.create_tenure(@invalid_attrs)
+    end
+
+    test "update_tenure/2 with valid data updates the tenure" do
+      tenure = tenure_fixture()
+      assert {:ok, tenure} = Biz.update_tenure(tenure, @update_attrs)
+      assert %Tenure{} = tenure
+      assert tenure.ends_at == DateTime.from_naive!(~N[2011-05-18 15:01:01.000000Z], "Etc/UTC")
+      assert tenure.is_active == false
+      assert tenure.is_logical_deleted == false
+      assert tenure.job_description == "some updated job_description"
+      assert tenure.job_title == "some updated job_title"
+      assert tenure.started_at == DateTime.from_naive!(~N[2011-05-18 15:01:01.000000Z], "Etc/UTC")
+    end
+
+    test "update_tenure/2 with invalid data returns error changeset" do
+      tenure = tenure_fixture()
+      assert {:error, %Ecto.Changeset{}} = Biz.update_tenure(tenure, @invalid_attrs)
+      assert tenure == Biz.get_tenure!(tenure.id)
+    end
+
+    test "delete_tenure/1 deletes the tenure" do
+      tenure = tenure_fixture()
+      assert {:ok, %Tenure{}} = Biz.delete_tenure(tenure)
+      assert_raise Ecto.NoResultsError, fn -> Biz.get_tenure!(tenure.id) end
+    end
+
+    test "change_tenure/1 returns a tenure changeset" do
+      tenure = tenure_fixture()
+      assert %Ecto.Changeset{} = Biz.change_tenure(tenure)
+    end
+  end
 end

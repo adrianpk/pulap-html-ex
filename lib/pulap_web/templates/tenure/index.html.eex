@@ -1,0 +1,36 @@
+<h2>Listing Tenures</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Job title</th>
+      <th>Job description</th>
+      <th>Started at</th>
+      <th>Ends at</th>
+      <th>Is active</th>
+      <th>Is logical deleted</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for tenure <- @tenures do %>
+    <tr>
+      <td><%= tenure.job_title %></td>
+      <td><%= tenure.job_description %></td>
+      <td><%= tenure.started_at %></td>
+      <td><%= tenure.ends_at %></td>
+      <td><%= tenure.is_active %></td>
+      <td><%= tenure.is_logical_deleted %></td>
+
+      <td class="text-right">
+        <span><%= link "Show", to: tenure_path(@conn, :show, tenure), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Edit", to: tenure_path(@conn, :edit, tenure), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Delete", to: tenure_path(@conn, :delete, tenure), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Tenure", to: tenure_path(@conn, :new) %></span>

@@ -1,0 +1,5 @@
+<h2>Edit Tenure</h2>
+
+<%= render "form.html", Map.put(assigns, :action, tenure_path(@conn, :update, @tenure)) %>
+
+<span><%= link "Back", to: tenure_path(@conn, :index) %></span>

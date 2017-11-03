@@ -1,0 +1,38 @@
+<h2>Show Tenure</h2>
+
+<ul>
+
+  <li>
+    <strong>Job title:</strong>
+    <%= @tenure.job_title %>
+  </li>
+
+  <li>
+    <strong>Job description:</strong>
+    <%= @tenure.job_description %>
+  </li>
+
+  <li>
+    <strong>Started at:</strong>
+    <%= @tenure.started_at %>
+  </li>
+
+  <li>
+    <strong>Ends at:</strong>
+    <%= @tenure.ends_at %>
+  </li>
+
+  <li>
+    <strong>Is active:</strong>
+    <%= @tenure.is_active %>
+  </li>
+
+  <li>
+    <strong>Is logical deleted:</strong>
+    <%= @tenure.is_logical_deleted %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: tenure_path(@conn, :edit, @tenure) %></span>
+<span><%= link "Back", to: tenure_path(@conn, :index) %></span>
