@@ -2,7 +2,8 @@ defmodule Pulap.Repo.Migrations.CreateTenures do
   use Ecto.Migration
 
   def change do
-    create table(:tenures) do
+    create table(:tenures, primary_key: false) do
+      add :id, :binary_id, primary_key: true
       add :job_title, :string, size: 32
       add :job_description, :text
       add :started_at, :utc_datetime
