@@ -293,4 +293,100 @@ defmodule Pulap.Biz do
   def change_tenure(%Tenure{} = tenure) do
     Tenure.changeset(tenure, %{})
   end
+
+  alias Pulap.Biz.Administratorship
+
+  @doc """
+  Returns the list of administratorships.
+
+  ## Examples
+
+      iex> list_administratorships()
+      [%Administratorship{}, ...]
+
+  """
+  def list_administratorships do
+    Repo.all(Administratorship)
+  end
+
+  @doc """
+  Gets a single administratorship.
+
+  Raises `Ecto.NoResultsError` if the Administratorship does not exist.
+
+  ## Examples
+
+      iex> get_administratorship!(123)
+      %Administratorship{}
+
+      iex> get_administratorship!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_administratorship!(id), do: Repo.get!(Administratorship, id)
+
+  @doc """
+  Creates a administratorship.
+
+  ## Examples
+
+      iex> create_administratorship(%{field: value})
+      {:ok, %Administratorship{}}
+
+      iex> create_administratorship(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_administratorship(attrs \\ %{}) do
+    %Administratorship{}
+    |> Administratorship.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  @doc """
+  Updates a administratorship.
+
+  ## Examples
+
+      iex> update_administratorship(administratorship, %{field: new_value})
+      {:ok, %Administratorship{}}
+
+      iex> update_administratorship(administratorship, %{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def update_administratorship(%Administratorship{} = administratorship, attrs) do
+    administratorship
+    |> Administratorship.changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc """
+  Deletes a Administratorship.
+
+  ## Examples
+
+      iex> delete_administratorship(administratorship)
+      {:ok, %Administratorship{}}
+
+      iex> delete_administratorship(administratorship)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_administratorship(%Administratorship{} = administratorship) do
+    Repo.delete(administratorship)
+  end
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking administratorship changes.
+
+  ## Examples
+
+      iex> change_administratorship(administratorship)
+      %Ecto.Changeset{source: %Administratorship{}}
+
+  """
+  def change_administratorship(%Administratorship{} = administratorship) do
+    Administratorship.changeset(administratorship, %{})
+  end
 end
