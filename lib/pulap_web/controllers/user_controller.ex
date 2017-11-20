@@ -4,9 +4,27 @@ defmodule PulapWeb.UserController do
   alias Pulap.Auth
   alias Pulap.Auth.User
 
+  require IEx
+
   def index(conn, _params) do
     users = Auth.list_users()
     render(conn, "index.html", users: users)
+  end
+
+  def signup(%{method: "GET"} = conn, _params) do
+    changeset = Auth.change_user(%User{})
+    render(conn, "signup.html", changeset: changeset)
+  end
+
+  def signup(%{method: "POST"} = conn, %{"user" => user_params}) do
+    case Auth.sign_up_user(user_params) do
+      {:ok, user} ->
+        conn
+        |> put_flash(:info, "User signed up successfully.")
+        |> redirect(to: user_path(conn, :show, user))
+      {:error, %Ecto.Changeset{} = changeset} ->
+        render(conn, "signup.html", changeset: changeset)
+    end
   end
 
   def new(conn, _params) do
@@ -56,5 +74,49 @@ defmodule PulapWeb.UserController do
     conn
     |> put_flash(:info, "User deleted successfully.")
     |> redirect(to: user_path(conn, :index))
+  end
+
+  defp authorize_user(conn, _) do
+    conn
+  end
+
+  defp authorize_admin(conn, _) do
+    conn
+  end
+
+  defp authorize_user2(conn, _) do
+    user = conn |> fetch_session |> get_session(:current_user)
+    user2 = conn.assigns[:current_user]
+    ##IEx.pry
+    if user && (Integer.to_string(user.id) == conn.params["id"] || Pulap.RoleChecker.is_superadmin?(user)) do
+      conn
+    else
+      conn
+      |> put_flash(:error, "You are not authorized to modify that user!")
+      |> redirect(to: page_path(conn, :index))
+      |> halt()
+    end
+  end
+
+  defp authorize_admin2(conn, _) do
+    user = conn |> fetch_session |> get_session(:current_user)
+    ##IEx.pry
+    if user && Pulap.RoleChecker.is_superadmin?(user) do
+      conn
+    else
+      conn
+      |> put_flash(:error, "You are not authorized to create new users!")
+      |> redirect(to: page_path(conn, :index))
+      |> halt()
+    end
+  end
+
+  defp user_roles(user) do
+    assoc(user, :roles)
+  end
+
+  defp user_preload_assoc(changeset) do
+    changeset
+    |> Repo.preload(:roles)
   end
 end

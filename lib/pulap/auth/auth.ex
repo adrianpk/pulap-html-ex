@@ -38,6 +38,77 @@ defmodule Pulap.Auth do
   def get_user!(id), do: Repo.get!(User, id)
 
   @doc """
+  Gets a single user by email.
+
+  Raises `Ecto.NoResultsError` if the User does not exist.
+
+  ## Examples
+
+  iex> get_user_by_email!(user@mail.com)
+  %User{}
+
+  iex> get_user!(user@mail.com)
+  ** (Ecto.NoResultsError)
+
+  """
+  def get_user_by_email!(email), do: Repo.get_by!(User, email: email)
+
+  require IEx
+
+  @doc """
+  Sign up a user.
+
+  ## Examples
+
+  iex> sign_up_user(%{field: value})
+  {:ok, %User{}}
+
+  iex> sign_up_user(%{field: bad_value})
+  {:error, %Ecto.Changeset{}}
+
+  """
+  def sign_up_user(attrs \\ %{}) do
+    %User{}
+    |> User.signup_changeset(attrs)
+    |> Repo.insert()
+  end
+
+  @doc """
+  Authenticate user.
+
+  ## Examples
+
+  iex> authenticate_user(%{field: value})
+  {:ok, %User{}}
+
+  iex> authenticate_user(%{field: bad_value})
+  {:error, %Ecto.Changeset{}}
+
+  """
+  require IEx
+  alias Comeonin.Bcrypt
+
+  def authenticate_user(username, supplied_password) do
+    query = from u in User, where: u.username == ^username
+    Repo.one(query)
+    |> check_password(supplied_password)
+  end
+
+  defp check_password(nil, _), do: {:error, "Incorrect username or password"}
+
+  defp check_password(user, supplied_password) do
+    case Bcrypt.checkpw(supplied_password, user.password_hash) do
+      true -> {:ok, user}
+      false -> {:error, "Incorrect username or password"}
+    end
+  end
+
+
+
+
+
+
+  @doc """
   Creates a user.
 
   ## Examples

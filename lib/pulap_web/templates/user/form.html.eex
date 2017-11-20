@@ -78,24 +78,6 @@
   </div>
 
   <div class="form-group">
-    <%= label f, :created_by, class: "control-label" %>
-    <%= text_input f, :created_by, class: "form-control" %>
-    <%= error_tag f, :created_by %>
-  </div>
-
-  <div class="form-group">
-    <%= label f, :is_active, class: "control-label" %>
-    <%= checkbox f, :is_active, class: "checkbox" %>
-    <%= error_tag f, :is_active %>
-  </div>
-
-  <div class="form-group">
-    <%= label f, :is_logical_deleted, class: "control-label" %>
-    <%= checkbox f, :is_logical_deleted, class: "checkbox" %>
-    <%= error_tag f, :is_logical_deleted %>
-  </div>
-
-  <div class="form-group">
     <%= submit "Submit", class: "btn btn-primary" %>
   </div>
 <% end %>
