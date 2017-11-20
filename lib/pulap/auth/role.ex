@@ -10,7 +10,8 @@ defmodule Pulap.Auth.Role do
     field :is_logical_deleted, :boolean, default: false
     field :name, :string
     field :organization_id, :id
-    field :created_by, :id
+    field :created_by_id, :id
+    field :updated_by_id, :id
 
     timestamps()
   end

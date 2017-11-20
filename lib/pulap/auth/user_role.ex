@@ -13,6 +13,7 @@ defmodule Pulap.Auth.UserRole do
     field :user_id, :id
     field :role_id, :id
     field :created_by, :id
+    field :updated_by, :id
 
     timestamps()
   end
