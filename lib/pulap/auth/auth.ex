@@ -7,6 +7,7 @@ defmodule Pulap.Auth do
   alias Pulap.Repo
 
   alias Pulap.Auth.User
+  alias Pulap.Auth.Profile
 
   @doc """
   Returns the list of users.
@@ -55,6 +56,8 @@ defmodule Pulap.Auth do
 
   require IEx
 
+  import Ecto
+
   @doc """
   Sign up a user.
 
@@ -68,9 +71,15 @@ defmodule Pulap.Auth do
 
   """
   def sign_up_user(attrs \\ %{}) do
-    %User{}
-    |> User.signup_changeset(attrs)
-    |> Repo.insert()
+    Repo.transaction fn ->
+      user = %User{}
+             |> User.signup_changeset(attrs)
+             |> Repo.insert!
+      user
+      |> Ecto.build_assoc(:profile, %Profile{email: user.email})
+      |> Repo.insert()
+      user
+    end
   end
 
   @doc """
@@ -102,11 +111,6 @@ defmodule Pulap.Auth do
       false -> {:error, "Incorrect username or password"}
     end
   end
-
-
-
-
-
 
   @doc """
   Creates a user.
