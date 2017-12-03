@@ -15,7 +15,7 @@ defmodule PulapWeb.RealEstateController do
   end
 
   def create(conn, %{"real_estate" => real_estate_params}) do
-    case Pulap.create_real_estate(real_estate_params) do
+    case Biz.create_real_estate(real_estate_params) do
       {:ok, real_estate} ->
         conn
         |> put_flash(:info, "Real estate created successfully.")
