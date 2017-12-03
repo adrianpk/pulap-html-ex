@@ -4,7 +4,7 @@ defmodule Pulap.App.Property do
   alias Pulap.App.Property
 
 
-  schema "properties" do
+  schema "property" do
     field :boolean, :boolean, default: false
     field :date, :date
     field :datetime, :naive_datetime
@@ -16,12 +16,12 @@ defmodule Pulap.App.Property do
     field :is_active, :boolean, default: false
     field :is_logical_deleted, :boolean, default: false
     field :name, :string
-    field :properties_set_name, :string
+    field :property_set_name, :string
     field :property_data_type, :string
     field :string, :string
     field :time, :time
     field :uuid, Ecto.UUID
-    field :properties_set_id, :id
+    field :property_set_id, :id
     field :created_by, :id
     field :updated_by, :id
 
@@ -31,7 +31,7 @@ defmodule Pulap.App.Property do
   @doc false
   def changeset(%Property{} = property, attrs) do
     property
-    |> cast(attrs, [:properties_set_name, :name, :description, :property_data_type, :boolean, :date, :datetime, :decimal, :decimal, :float, :geolocation, :integer, :string, :time, :uuid, :is_active, :is_logical_deleted])
-    |> validate_required([:properties_set_name, :name, :description, :property_data_type, :boolean, :date, :datetime, :decimal, :decimal, :float, :geolocation, :integer, :string, :time, :uuid, :is_active, :is_logical_deleted])
+    |> cast(attrs, [:property_set_name, :name, :description, :property_data_type, :boolean, :date, :datetime, :decimal, :decimal, :float, :geolocation, :integer, :string, :time, :uuid, :is_active, :is_logical_deleted])
+    |> validate_required([:property_set_name, :name, :description, :property_data_type, :boolean, :date, :datetime, :decimal, :decimal, :float, :geolocation, :integer, :string, :time, :uuid, :is_active, :is_logical_deleted])
   end
 end

@@ -1,7 +1,7 @@
-defmodule Pulap.App.PropertiesSet do
+defmodule Pulap.App.PropertySet do
   use Ecto.Schema
   import Ecto.Changeset
-  alias Pulap.App.PropertiesSet
+  alias Pulap.App.PropertySet
 
 
   schema "property_sets" do
@@ -17,8 +17,8 @@ defmodule Pulap.App.PropertiesSet do
   end
 
   @doc false
-  def changeset(%PropertiesSet{} = properties_set, attrs) do
-    properties_set
+  def changeset(%PropertySet{} = property_set, attrs) do
+    property_set
     |> cast(attrs, [:name, :description, :holder_id, :is_active, :is_logical_deleted])
     |> validate_required([:name, :description, :holder_id, :is_active, :is_logical_deleted])
   end

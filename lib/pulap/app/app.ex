@@ -6,100 +6,100 @@ defmodule Pulap.App do
   import Ecto.Query, warn: false
   alias Pulap.Repo
 
-  alias Pulap.App.PropertiesSet
+  alias Pulap.App.PropertySet
 
   @doc """
-  Returns the list of properties_set.
+  Returns the list of property_set.
 
   ## Examples
 
-      iex> list_properties_set()
-      [%PropertiesSet{}, ...]
+      iex> list_property_set()
+      [%PropertySet{}, ...]
 
   """
   def list_property_sets do
-    Repo.all(PropertiesSet)
+    Repo.all(PropertySet)
   end
 
   @doc """
-  Gets a single properties_set.
+  Gets a single property_set.
 
-  Raises `Ecto.NoResultsError` if the Properties set does not exist.
+  Raises `Ecto.NoResultsError` if the Property set does not exist.
 
   ## Examples
 
-      iex> get_properties_set!(123)
-      %PropertiesSet{}
+      iex> get_property_set!(123)
+      %PropertySet{}
 
-      iex> get_properties_set!(456)
+      iex> get_property_set!(456)
       ** (Ecto.NoResultsError)
 
   """
-  def get_properties_set!(id), do: Repo.get!(PropertiesSet, id)
+  def get_property_set!(id), do: Repo.get!(PropertySet, id)
 
   @doc """
-  Creates a properties_set.
+  Creates a property_set.
 
   ## Examples
 
-      iex> create_properties_set(%{field: value})
-      {:ok, %PropertiesSet{}}
+      iex> create_property_set(%{field: value})
+      {:ok, %PropertySet{}}
 
-      iex> create_properties_set(%{field: bad_value})
+      iex> create_property_set(%{field: bad_value})
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_properties_set(attrs \\ %{}) do
-    %PropertiesSet{}
-    |> PropertiesSet.changeset(attrs)
+  def create_property_set(attrs \\ %{}) do
+    %PropertySet{}
+    |> PropertySet.changeset(attrs)
     |> Repo.insert()
   end
 
   @doc """
-  Updates a properties_set.
+  Updates a property_set.
 
   ## Examples
 
-      iex> update_properties_set(properties_set, %{field: new_value})
-      {:ok, %PropertiesSet{}}
+      iex> update_property_set(property_set, %{field: new_value})
+      {:ok, %PropertySet{}}
 
-      iex> update_properties_set(properties_set, %{field: bad_value})
+      iex> update_property_set(property_set, %{field: bad_value})
       {:error, %Ecto.Changeset{}}
 
   """
-  def update_properties_set(%PropertiesSet{} = properties_set, attrs) do
-    properties_set
-    |> PropertiesSet.changeset(attrs)
+  def update_property_set(%PropertySet{} = property_set, attrs) do
+    property_set
+    |> PropertySet.changeset(attrs)
     |> Repo.update()
   end
 
   @doc """
-  Deletes a PropertiesSet.
+  Deletes a PropertySet.
 
   ## Examples
 
-      iex> delete_properties_set(properties_set)
-      {:ok, %PropertiesSet{}}
+      iex> delete_property_set(property_set)
+      {:ok, %PropertySet{}}
 
-      iex> delete_properties_set(properties_set)
+      iex> delete_property_set(property_set)
       {:error, %Ecto.Changeset{}}
 
   """
-  def delete_properties_set(%PropertiesSet{} = properties_set) do
-    Repo.delete(properties_set)
+  def delete_property_set(%PropertySet{} = property_set) do
+    Repo.delete(property_set)
   end
 
   @doc """
-  Returns an `%Ecto.Changeset{}` for tracking properties_set changes.
+  Returns an `%Ecto.Changeset{}` for tracking property_set changes.
 
   ## Examples
 
-      iex> change_properties_set(properties_set)
-      %Ecto.Changeset{source: %PropertiesSet{}}
+      iex> change_property_set(property_set)
+      %Ecto.Changeset{source: %PropertySet{}}
 
   """
-  def change_properties_set(%PropertiesSet{} = properties_set) do
-    PropertiesSet.changeset(properties_set, %{})
+  def change_property_set(%PropertySet{} = property_set) do
+    PropertySet.changeset(property_set, %{})
   end
 
   alias Pulap.App.Property
@@ -196,198 +196,6 @@ defmodule Pulap.App do
   """
   def change_property(%Property{} = property) do
     Property.changeset(property, %{})
-  end
-
-  alias Pulap.App.PlanSubscription
-
-  @doc """
-  Returns the list of plan_subscriptions.
-
-  ## Examples
-
-      iex> list_plan_subscriptions()
-      [%PlanSubscription{}, ...]
-
-  """
-  def list_plan_subscriptions do
-    Repo.all(PlanSubscription)
-  end
-
-  @doc """
-  Gets a single plan_subscription.
-
-  Raises `Ecto.NoResultsError` if the Plan subscription does not exist.
-
-  ## Examples
-
-      iex> get_plan_subscription!(123)
-      %PlanSubscription{}
-
-      iex> get_plan_subscription!(456)
-      ** (Ecto.NoResultsError)
-
-  """
-  def get_plan_subscription!(id), do: Repo.get!(PlanSubscription, id)
-
-  @doc """
-  Creates a plan_subscription.
-
-  ## Examples
-
-      iex> create_plan_subscription(%{field: value})
-      {:ok, %PlanSubscription{}}
-
-      iex> create_plan_subscription(%{field: bad_value})
-      {:error, %Ecto.Changeset{}}
-
-  """
-  def create_plan_subscription(attrs \\ %{}) do
-    %PlanSubscription{}
-    |> PlanSubscription.changeset(attrs)
-    |> Repo.insert()
-  end
-
-  @doc """
-  Updates a plan_subscription.
-
-  ## Examples
-
-      iex> update_plan_subscription(plan_subscription, %{field: new_value})
-      {:ok, %PlanSubscription{}}
-
-      iex> update_plan_subscription(plan_subscription, %{field: bad_value})
-      {:error, %Ecto.Changeset{}}
-
-  """
-  def update_plan_subscription(%PlanSubscription{} = plan_subscription, attrs) do
-    plan_subscription
-    |> PlanSubscription.changeset(attrs)
-    |> Repo.update()
-  end
-
-  @doc """
-  Deletes a PlanSubscription.
-
-  ## Examples
-
-      iex> delete_plan_subscription(plan_subscription)
-      {:ok, %PlanSubscription{}}
-
-      iex> delete_plan_subscription(plan_subscription)
-      {:error, %Ecto.Changeset{}}
-
-  """
-  def delete_plan_subscription(%PlanSubscription{} = plan_subscription) do
-    Repo.delete(plan_subscription)
-  end
-
-  @doc """
-  Returns an `%Ecto.Changeset{}` for tracking plan_subscription changes.
-
-  ## Examples
-
-      iex> change_plan_subscription(plan_subscription)
-      %Ecto.Changeset{source: %PlanSubscription{}}
-
-  """
-  def change_plan_subscription(%PlanSubscription{} = plan_subscription) do
-    PlanSubscription.changeset(plan_subscription, %{})
-  end
-
-  alias Pulap.App.Plan
-
-  @doc """
-  Returns the list of plans.
-
-  ## Examples
-
-      iex> list_plans()
-      [%Plan{}, ...]
-
-  """
-  def list_plans do
-    Repo.all(Plan)
-  end
-
-  @doc """
-  Gets a single plan.
-
-  Raises `Ecto.NoResultsError` if the Plan does not exist.
-
-  ## Examples
-
-      iex> get_plan!(123)
-      %Plan{}
-
-      iex> get_plan!(456)
-      ** (Ecto.NoResultsError)
-
-  """
-  def get_plan!(id), do: Repo.get!(Plan, id)
-
-  @doc """
-  Creates a plan.
-
-  ## Examples
-
-      iex> create_plan(%{field: value})
-      {:ok, %Plan{}}
-
-      iex> create_plan(%{field: bad_value})
-      {:error, %Ecto.Changeset{}}
-
-  """
-  def create_plan(attrs \\ %{}) do
-    %Plan{}
-    |> Plan.changeset(attrs)
-    |> Repo.insert()
-  end
-
-  @doc """
-  Updates a plan.
-
-  ## Examples
-
-      iex> update_plan(plan, %{field: new_value})
-      {:ok, %Plan{}}
-
-      iex> update_plan(plan, %{field: bad_value})
-      {:error, %Ecto.Changeset{}}
-
-  """
-  def update_plan(%Plan{} = plan, attrs) do
-    plan
-    |> Plan.changeset(attrs)
-    |> Repo.update()
-  end
-
-  @doc """
-  Deletes a Plan.
-
-  ## Examples
-
-      iex> delete_plan(plan)
-      {:ok, %Plan{}}
-
-      iex> delete_plan(plan)
-      {:error, %Ecto.Changeset{}}
-
-  """
-  def delete_plan(%Plan{} = plan) do
-    Repo.delete(plan)
-  end
-
-  @doc """
-  Returns an `%Ecto.Changeset{}` for tracking plan changes.
-
-  ## Examples
-
-      iex> change_plan(plan)
-      %Ecto.Changeset{source: %Plan{}}
-
-  """
-  def change_plan(%Plan{} = plan) do
-    Plan.changeset(plan, %{})
   end
 
   alias Pulap.App.KeyValue
