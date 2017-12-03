@@ -1,9 +1,10 @@
 defmodule PulapWeb.UserController do
-  use PulapWeb, :controller
 
+  #use Guardian, otp_app: :pulap
+  use PulapWeb, :controller
   alias Pulap.Auth
   alias Pulap.Auth.User
-
+  alias Pulap.Auth.Guardian
   require IEx
 
   def index(conn, _params) do
@@ -11,7 +12,7 @@ defmodule PulapWeb.UserController do
     render(conn, "index.html", users: users)
   end
 
-  def signup(%{method: "GET"} = conn, _params) do
+  def signup(%{method: "GET"} = conn, params) do
     changeset = Auth.change_user(%User{})
     render(conn, "signup.html", changeset: changeset)
   end
@@ -20,6 +21,7 @@ defmodule PulapWeb.UserController do
     case Auth.sign_up_user(user_params) do
       {:ok, user} ->
         conn
+        |> Guardian.Plug.sign_in(user)
         |> put_flash(:info, "User signed up successfully.")
         |> redirect(to: user_path(conn, :show, user))
       {:error, %Ecto.Changeset{} = changeset} ->
@@ -76,40 +78,40 @@ defmodule PulapWeb.UserController do
     |> redirect(to: user_path(conn, :index))
   end
 
-  defp authorize_user(conn, _) do
-    conn
-  end
+  # defp authorize_user(conn, _) do
+  #   conn
+  # end
 
-  defp authorize_admin(conn, _) do
-    conn
-  end
+  # defp authorize_admin(conn, _) do
+  #   conn
+  # end
 
-  defp authorize_user2(conn, _) do
-    user = conn |> fetch_session |> get_session(:current_user)
-    user2 = conn.assigns[:current_user]
-    ##IEx.pry
-    if user && (Integer.to_string(user.id) == conn.params["id"] || Pulap.RoleChecker.is_superadmin?(user)) do
-      conn
-    else
-      conn
-      |> put_flash(:error, "You are not authorized to modify that user!")
-      |> redirect(to: page_path(conn, :index))
-      |> halt()
-    end
-  end
+  # defp authorize_user2(conn, _) do
+  #   user = conn |> fetch_session |> get_session(:current_user)
+  #   user2 = conn.assigns[:current_user]
+  #   ##IEx.pry
+  #   if user && (Integer.to_string(user.id) == conn.params["id"] || Pulap.RoleChecker.is_superadmin?(user)) do
+  #     conn
+  #   else
+  #     conn
+  #     |> put_flash(:error, "You are not authorized to modify that user!")
+  #     |> redirect(to: page_path(conn, :index))
+  #     |> halt()
+  #   end
+  # end
 
-  defp authorize_admin2(conn, _) do
-    user = conn |> fetch_session |> get_session(:current_user)
-    ##IEx.pry
-    if user && Pulap.RoleChecker.is_superadmin?(user) do
-      conn
-    else
-      conn
-      |> put_flash(:error, "You are not authorized to create new users!")
-      |> redirect(to: page_path(conn, :index))
-      |> halt()
-    end
-  end
+  # defp authorize_admin2(conn, _) do
+  #   user = conn |> fetch_session |> get_session(:current_user)
+  #   ##IEx.pry
+  #   if user && Pulap.RoleChecker.is_superadmin?(user) do
+  #     conn
+  #   else
+  #     conn
+  #     |> put_flash(:error, "You are not authorized to create new users!")
+  #     |> redirect(to: page_path(conn, :index))
+  #     |> halt()
+  #   end
+  # end
 
   defp user_roles(user) do
     assoc(user, :roles)
