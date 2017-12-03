@@ -4,40 +4,40 @@
 
   <li>
     <strong>Id:</strong>
-    <%= @properties_set.id %>
+    <%= @property_set.id %>
   </li>
 
   <li>
     <strong>Name:</strong>
-    <%= @properties_set.name %>
+    <%= @property_set.name %>
   </li>
 
   <li>
     <strong>Description:</strong>
-    <%= @properties_set.description %>
+    <%= @property_set.description %>
   </li>
 
   <li>
     <strong>Holder:</strong>
-    <%= @properties_set.holder_id %>
+    <%= @property_set.holder_id %>
   </li>
 
   <li>
     <strong>Is active:</strong>
-    <%= @properties_set.is_active %>
+    <%= @property_set.is_active %>
   </li>
 
   <li>
     <strong>Is logical deleted:</strong>
-    <%= @properties_set.is_logical_deleted %>
+    <%= @property_set.is_logical_deleted %>
   </li>
 
   <li>
     <strong>Started at:</strong>
-    <%= @properties_set.started_at %>
+    <%= @property_set.started_at %>
   </li>
 
 </ul>
 
-<span><%= link "Edit", to: properties_set_path(@conn, :edit, @properties_set) %></span>
-<span><%= link "Back", to: properties_set_path(@conn, :index) %></span>
+<span><%= link "Edit", to: property_set_path(@conn, :edit, @property_set) %></span>
+<span><%= link "Back", to: property_set_path(@conn, :index) %></span>

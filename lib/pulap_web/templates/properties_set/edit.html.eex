@@ -1,5 +1,5 @@
 <h2>Edit Properties set</h2>
 
-<%= render "form.html", Map.put(assigns, :action, properties_set_path(@conn, :update, @properties_set)) %>
+<%= render "form.html", Map.put(assigns, :action, property_set_path(@conn, :update, @property_set)) %>
 
-<span><%= link "Back", to: properties_set_path(@conn, :index) %></span>
+<span><%= link "Back", to: property_set_path(@conn, :index) %></span>

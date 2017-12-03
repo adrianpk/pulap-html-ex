@@ -29,7 +29,7 @@
 <%= for property <- @properties do %>
     <tr>
       <td><%= property.id %></td>
-      <td><%= property.properties_set_name %></td>
+      <td><%= property.property_set_name %></td>
       <td><%= property.name %></td>
       <td><%= property.description %></td>
       <td><%= property.property_data_type %></td>

@@ -12,9 +12,9 @@
   </div>
 
   <div class="form-group">
-    <%= label f, :properties_set_name, class: "control-label" %>
-    <%= text_input f, :properties_set_name, class: "form-control" %>
-    <%= error_tag f, :properties_set_name %>
+    <%= label f, :property_set_name, class: "control-label" %>
+    <%= text_input f, :property_set_name, class: "form-control" %>
+    <%= error_tag f, :property_set_name %>
   </div>
 
   <div class="form-group">

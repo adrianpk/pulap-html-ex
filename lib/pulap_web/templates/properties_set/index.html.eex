@@ -15,24 +15,24 @@
     </tr>
   </thead>
   <tbody>
-<%= for properties_set <- @property_sets do %>
+<%= for property_set <- @property_sets do %>
     <tr>
-      <td><%= properties_set.id %></td>
-      <td><%= properties_set.name %></td>
-      <td><%= properties_set.description %></td>
-      <td><%= properties_set.holder_id %></td>
-      <td><%= properties_set.is_active %></td>
-      <td><%= properties_set.is_logical_deleted %></td>
-      <td><%= properties_set.started_at %></td>
+      <td><%= property_set.id %></td>
+      <td><%= property_set.name %></td>
+      <td><%= property_set.description %></td>
+      <td><%= property_set.holder_id %></td>
+      <td><%= property_set.is_active %></td>
+      <td><%= property_set.is_logical_deleted %></td>
+      <td><%= property_set.started_at %></td>
 
       <td class="text-right">
-        <span><%= link "Show", to: properties_set_path(@conn, :show, properties_set), class: "btn btn-default btn-xs" %></span>
-        <span><%= link "Edit", to: properties_set_path(@conn, :edit, properties_set), class: "btn btn-default btn-xs" %></span>
-        <span><%= link "Delete", to: properties_set_path(@conn, :delete, properties_set), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
+        <span><%= link "Show", to: property_set_path(@conn, :show, property_set), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Edit", to: property_set_path(@conn, :edit, property_set), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Delete", to: property_set_path(@conn, :delete, property_set), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
       </td>
     </tr>
 <% end %>
   </tbody>
 </table>
 
-<span><%= link "New Properties set", to: properties_set_path(@conn, :new) %></span>
+<span><%= link "New Properties set", to: property_set_path(@conn, :new) %></span>

@@ -9,7 +9,7 @@
 
   <li>
     <strong>Properties set name:</strong>
-    <%= @property.properties_set_name %>
+    <%= @property.property_set_name %>
   </li>
 
   <li>

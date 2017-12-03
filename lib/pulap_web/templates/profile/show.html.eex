@@ -3,11 +3,6 @@
 <ul>
 
   <li>
-    <strong>Id:</strong>
-    <%= @profile.id %>
-  </li>
-
-  <li>
     <strong>Name:</strong>
     <%= @profile.name %>
   </li>
@@ -42,57 +37,8 @@
     <%= @profile.anniversary_date %>
   </li>
 
-  <li>
-    <strong>Avatar path:</strong>
-    <%= @profile.avatar_path %>
-  </li>
-
-  <li>
-    <strong>Avatar:</strong>
-    <%= @profile.avatar %>
-  </li>
-
-  <li>
-    <strong>Header path:</strong>
-    <%= @profile.header_path %>
-  </li>
-
-  <li>
-    <strong>Header:</strong>
-    <%= @profile.header %>
-  </li>
-
-  <li>
-    <strong>Cards:</strong>
-    <%= @profile.cards %>
-  </li>
-
-  <li>
-    <strong>Annotations:</strong>
-    <%= @profile.annotations %>
-  </li>
-
-  <li>
-    <strong>Geolocation:</strong>
-    <%= @profile.geolocation %>
-  </li>
-
-  <li>
-    <strong>Is active:</strong>
-    <%= @profile.is_active %>
-  </li>
-
-  <li>
-    <strong>Is logical deleted:</strong>
-    <%= @profile.is_logical_deleted %>
-  </li>
-
-  <li>
-    <strong>Started at:</strong>
-    <%= @profile.started_at %>
-  </li>
-
 </ul>
 
-<span><%= link "Edit", to: profile_path(@conn, :edit, @profile) %></span>
-<span><%= link "Back", to: profile_path(@conn, :index) %></span>
+<span><%= link "Home", to: page_path(@conn, :index) %></span>
+<span><%= link "Dashboard", to: dashboard_path(@conn, :index) %></span>
+<span><%= link "Edit", to: user_profile_path(@conn, :edit, @user) %></span>

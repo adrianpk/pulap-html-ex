@@ -6,12 +6,6 @@
   <% end %>
 
   <div class="form-group">
-    <%= label f, :id, class: "control-label" %>
-    <%= text_input f, :id, class: "form-control" %>
-    <%= error_tag f, :id %>
-  </div>
-
-  <div class="form-group">
     <%= label f, :name, class: "control-label" %>
     <%= text_input f, :name, class: "form-control" %>
     <%= error_tag f, :name %>
@@ -51,66 +45,6 @@
     <%= label f, :anniversary_date, class: "control-label" %>
     <%= datetime_select f, :anniversary_date, class: "form-control" %>
     <%= error_tag f, :anniversary_date %>
-  </div>
-
-  <div class="form-group">
-    <%= label f, :avatar_path, class: "control-label" %>
-    <%= text_input f, :avatar_path, class: "form-control" %>
-    <%= error_tag f, :avatar_path %>
-  </div>
-
-  <div class="form-group">
-    <%= label f, :avatar, class: "control-label" %>
-    <%= text_input f, :avatar, class: "form-control" %>
-    <%= error_tag f, :avatar %>
-  </div>
-
-  <div class="form-group">
-    <%= label f, :header_path, class: "control-label" %>
-    <%= text_input f, :header_path, class: "form-control" %>
-    <%= error_tag f, :header_path %>
-  </div>
-
-  <div class="form-group">
-    <%= label f, :header, class: "control-label" %>
-    <%= text_input f, :header, class: "form-control" %>
-    <%= error_tag f, :header %>
-  </div>
-
-  <div class="form-group">
-    <%= label f, :cards, class: "control-label" %>
-    <%= text_input f, :cards, class: "form-control" %>
-    <%= error_tag f, :cards %>
-  </div>
-
-  <div class="form-group">
-    <%= label f, :annotations, class: "control-label" %>
-    <%= text_input f, :annotations, class: "form-control" %>
-    <%= error_tag f, :annotations %>
-  </div>
-
-  <div class="form-group">
-    <%= label f, :geolocation, class: "control-label" %>
-    <%= number_input f, :geolocation, step: "any", class: "form-control" %>
-    <%= error_tag f, :geolocation %>
-  </div>
-
-  <div class="form-group">
-    <%= label f, :is_active, class: "control-label" %>
-    <%= checkbox f, :is_active, class: "checkbox" %>
-    <%= error_tag f, :is_active %>
-  </div>
-
-  <div class="form-group">
-    <%= label f, :is_logical_deleted, class: "control-label" %>
-    <%= checkbox f, :is_logical_deleted, class: "checkbox" %>
-    <%= error_tag f, :is_logical_deleted %>
-  </div>
-
-  <div class="form-group">
-    <%= label f, :started_at, class: "control-label" %>
-    <%= datetime_select f, :started_at, class: "form-control" %>
-    <%= error_tag f, :started_at %>
   </div>
 
   <div class="form-group">
