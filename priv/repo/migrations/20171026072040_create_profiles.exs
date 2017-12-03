@@ -2,9 +2,11 @@ defmodule Pulap.Repo.Migrations.CreateProfiles do
   use Ecto.Migration
 
   def up do
-    create table(:profiles) do
-      add :user_id, references(:users, type: :binary_id, on_delete: :nothing)
-      add :properties_set_name, :string
+    create table(:profiles, primary_key: false) do
+      add :id, :uuid, primary_key: true
+      add :user_id, references(:users, type: :uuid, on_delete: :delete_all)
+      add :organization_id, references(:organizations, type: :uuid, on_delete: :delete_all)
+      add :property_set_name, :string
       add :name, :string, size: 32
       add :email, :string, size: 255
       add :description, :string, size: 255
@@ -25,8 +27,8 @@ defmodule Pulap.Repo.Migrations.CreateProfiles do
     alter table(:profiles) do
       add :is_active, :boolean, default: false, null: false
       add :is_logical_deleted, :boolean, default: false, null: false
-      add :created_by_id, references(:users, type: :binary_id, on_delete: :nothing)
-      add :updated_by_id, references(:users, type: :binary_id, on_delete: :nothing)
+      add :created_by_id, references(:users, type: :uuid, on_delete: :nothing)
+      add :updated_by_id, references(:users, type: :uuid, on_delete: :nothing)
 
       timestamps()
     end

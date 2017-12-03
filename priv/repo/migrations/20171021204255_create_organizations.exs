@@ -4,9 +4,9 @@ defmodule Pulap.Repo.Migrations.CreateOrganizations do
 
   def up do
     create table(:organizations, primary_key: false) do
-      add :id, :binary_id, primary_key: true
+      add :id, :uuid, primary_key: true
       add :owner_username, :string, size: 32, null: false
-      add :owner_id, references(:users, type: :binary_id, on_delete: :nothing)
+      add :owner_id, references(:users, type: :uuid, on_delete: :delete_all)
       add :name, :string, size: 32, null: false
       add :description, :string, size: 255
       add :card, :json
@@ -19,8 +19,8 @@ defmodule Pulap.Repo.Migrations.CreateOrganizations do
       add :started_at, :timestamptz
       add :is_active, :boolean, default: false, null: false
       add :is_logical_deleted, :boolean, default: false, null: false
-      add :created_by_id, references(:users, type: :binary_id, on_delete: :nothing)
-      add :updated_by_id, references(:users, type: :binary_id, on_delete: :nothing)
+      add :created_by_id, references(:users, type: :uuid, on_delete: :nothing)
+      add :updated_by_id, references(:users, type: :uuid, on_delete: :nothing)
 
       timestamps(type: :timestamptz)
     end

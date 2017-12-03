@@ -3,9 +3,9 @@ defmodule Pulap.Repo.Migrations.CreateProperties do
 
   def change do
     create table(:properties, primary_key: false) do
-      add :id, :binary_id, primary_key: true
-      add :properties_set_id, references(:property_sets, type: :binary_id, on_delete: :nothing)
-      add :properties_set_name, :string
+      add :id, :uuid, primary_key: true
+      add :property_set_id, references(:property_sets, type: :uuid, on_delete: :delete_all)
+      add :property_set_name, :string
       add :name, :string, size: 32, null: false
       add :description, :string
       add :property_data_type, :string, size: 32, null: false
@@ -21,13 +21,13 @@ defmodule Pulap.Repo.Migrations.CreateProperties do
       add :uuid, :uuid
       add :is_active, :boolean, default: false, null: false
       add :is_logical_deleted, :boolean, default: false, null: false
-      add :created_by_id, references(:users, type: :binary_id, on_delete: :nothing)
-      add :updated_by_id, references(:users, type: :binary_id, on_delete: :nothing)
+      add :created_by_id, references(:users, type: :uuid, on_delete: :nothing)
+      add :updated_by_id, references(:users, type: :uuid, on_delete: :nothing)
 
       timestamps()
     end
 
-    create unique_index(:properties, [:properties_set_id, :name])
+    create unique_index(:properties, [:property_set_id, :name])
     create index(:properties, [:created_by_id])
     create index(:properties, [:updated_by_id])
 

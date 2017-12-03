@@ -3,7 +3,7 @@ defmodule Pulap.Repo.Migrations.CreateUsers do
 
   def up do
     create table(:users, primary_key: false) do
-      add :id, :binary_id, primary_key: true
+      add :id, :uuid, primary_key: true
       add :username, :string, size: 32, null: false
       add :password_hash, :string, size: 128, null: false
       add :email, :string, size: 255, null: false
@@ -20,8 +20,8 @@ defmodule Pulap.Repo.Migrations.CreateUsers do
       add :started_at, :timestamptz
       add :is_active, :boolean, default: false, null: false
       add :is_logical_deleted, :boolean, default: false, null: false
-      add :created_by_id, references(:users, type: :binary_id, on_delete: :nothing)
-      add :updated_by_id, references(:users, type: :binary_id, on_delete: :nothing)
+      add :created_by_id, references(:users, type: :uuid, on_delete: :nothing)
+      add :updated_by_id, references(:users, type: :uuid, on_delete: :nothing)
 
       timestamps(type: :timestamptz)
     end

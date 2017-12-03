@@ -3,14 +3,16 @@ defmodule Pulap.Repo.Migrations.CreateGeoAreas do
 
   def up do
     create table(:geo_areas, primary_key: false) do
-      add :id, :binary_id, primary_key: true
+      add :id, :uuid, primary_key: true
       add :adm_level, :string, size: 8, null: false
       add :adm_level_type, :string, size: 16, null: false
       add :name, :string, size: 64, null: false
-      add :alternative_name, :string, size: 64
       add :name_loc, :string, size: 64
+      add :alternative_name, :string, size: 64
+      add :alternative_name_loc, :string, size: 64
       add :canonical_name, :string, size: 255, null: false
       add :canonical_name_loc, :string, size: 255, null: false
+      add :normalized_name, :string, size: 64
       add :dialing_code, :string
       add :zip_code, :string
       add :is_main, :boolean, default: false, null: false
@@ -24,9 +26,9 @@ defmodule Pulap.Repo.Migrations.CreateGeoAreas do
       add :position, :integer
       add :is_active, :boolean, default: false, null: false
       add :is_logical_deleted, :boolean, default: false, null: false
-      add :parent_id, references(:geo_areas, type: :binary_id, on_delete: :nothing)
-      add :created_by_id, references(:users, type: :binary_id, on_delete: :nothing)
-      add :updated_by_id, references(:users, type: :binary_id, on_delete: :nothing)
+      add :parent_id, references(:geo_areas, type: :uuid, on_delete: :nothing)
+      add :created_by_id, references(:users, type: :uuid, on_delete: :nothing)
+      add :updated_by_id, references(:users, type: :uuid, on_delete: :nothing)
 
       timestamps()
     end

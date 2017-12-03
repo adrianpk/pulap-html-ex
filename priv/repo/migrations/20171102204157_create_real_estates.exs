@@ -3,12 +3,14 @@ defmodule Pulap.Repo.Migrations.CreateRealEstates do
 
   def change do
     create table(:real_estates, primary_key: false) do
-      add :id, :binary_id, primary_key: true
+      add :id, :uuid, primary_key: true
       add :name, :string, size: 32, null: false
       add :short_description, :string, size: 128
       add :description, :text
-      add :geo_area_canonical, :string, size: 255
-      add :geo_area_canonical_loc, :string, size: 255
+      add :geo_area_name, :string, size: 255
+      add :geo_area_name_loc, :string, size: 255
+      add :geo_area_canonical_name, :string, size: 255
+      add :geo_area_canonical_name_loc, :string, size: 255
       add :street, :string, size: 64
       add :street_number, :string, size: 8
       add :block, :string, size: 8
@@ -50,16 +52,16 @@ defmodule Pulap.Repo.Migrations.CreateRealEstates do
       add :position, :integer
       add :is_active, :boolean, default: false, null: false
       add :is_logical_deleted, :boolean, default: false, null: false
-      add :geo_area_id, references(:geo_areas, type: :binary_id, on_delete: :nothing)
-      add :property_type_id, references(:key_values, type: :binary_id, on_delete: :nothing)
-      add :currency_id, references(:currencies, type: :binary_id, on_delete: :nothing)
+      add :geo_area_id, references(:geo_areas, type: :uuid, on_delete: :nothing)
+      add :property_type_id, references(:key_values, type: :uuid, on_delete: :nothing)
+      add :currency_id, references(:currencies, type: :uuid, on_delete: :nothing)
       add :currency_code, :string, size: 4
       add :currency_symbol, :string, size: 4
-      add :type_of_building_id, references(:key_values, type: :binary_id, on_delete: :nothing)
-      add :kitchen_type_id, references(:key_values, type: :binary_id, on_delete: :nothing)
-      add :heating_type_id, references(:key_values, type: :binary_id, on_delete: :nothing)
-      add :created_by_id, references(:users, type: :binary_id, on_delete: :nothing)
-      add :updated_by_id, references(:users, type: :binary_id, on_delete: :nothing)
+      add :type_of_building_id, references(:key_values, type: :uuid, on_delete: :nothing)
+      add :kitchen_type_id, references(:key_values, type: :uuid, on_delete: :nothing)
+      add :heating_type_id, references(:key_values, type: :uuid, on_delete: :nothing)
+      add :created_by_id, references(:users, type: :uuid, on_delete: :nothing)
+      add :updated_by_id, references(:users, type: :uuid, on_delete: :nothing)
 
       timestamps()
     end
