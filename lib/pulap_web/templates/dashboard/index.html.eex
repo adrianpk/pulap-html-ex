@@ -1,0 +1,21 @@
+<h2>Dashboard</h2>
+
+<div>
+    <%= link "Profile", to: user_profile_path(@conn, :show, @user), class: "btn btn-default btn-xs" %>
+</div>
+
+<br/>
+
+<div>
+    <%= link "Organizations", to: organization_path(@conn, :index), class: "btn btn-default btn-xs" %>
+</div>
+
+<br/>
+
+<div>
+    <%= link "Real Estates", to: real_estate_path(@conn, :index), class: "btn btn-default btn-xs" %>
+</div>
+
+<br/>
+
+<span><%= link "Home", to: page_path(@conn, :index) %></span>
