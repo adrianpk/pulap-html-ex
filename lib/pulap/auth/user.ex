@@ -1,11 +1,9 @@
 defmodule Pulap.Auth.User do
-  use Ecto.Schema
+  use Pulap.Schema
   import Ecto.Changeset
   alias Pulap.Auth.User
   require Logger
   require IEx
-
-  @primary_key {:id, :binary_id, autogenerate: true}
 
   schema "users" do
     field :annotations, :string
@@ -25,13 +23,29 @@ defmodule Pulap.Auth.User do
     field :username, :string
 
     timestamps()
-
+    # Roles
     has_many :user_roles, Pulap.Auth.UserRole,
       on_delete: :nothing
     many_to_many :roles, Pulap.Auth.Role,
       join_through: Pulap.Auth.UserRole,
       on_delete: :nothing
-
+    # Profile
+    has_one :profile, Pulap.Auth.Profile,
+      on_replace: :update,
+      on_delete: :delete_all
+    # Organizations
+    has_many :organizations, Pulap.Auth.Organization,
+      on_delete: :delete_all
+    # Tenures
+    has_many :tenures, Pulap.Biz.Tenure,
+      on_delete: :delete_all
+    many_to_many :employers, Pulap.Auth.Organization,
+      join_through: Pulap.Auth.Tenure,
+      on_delete: :delete_all
+    # Real estates
+    many_to_many :real_estates, Pulap.Biz.RealEstate,
+      join_through: Pulap.Biz.Administratorship,
+      on_delete: :delete_all
   end
 
   # @doc false

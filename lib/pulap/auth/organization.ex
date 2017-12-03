@@ -15,7 +15,8 @@ defmodule Pulap.Auth.Organization do
     field :is_logical_deleted, :boolean, default: false
     field :name, :string
     field :started_at, :utc_datetime
-    #field :user_id, :binary_id
+    field :updated_by_id, Ecto.UUID
+    field :user_id, :binary_id
 
     timestamps()
   end
