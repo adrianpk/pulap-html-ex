@@ -3,75 +3,75 @@ defmodule Pulap.AppTest do
 
   alias Pulap.App
 
-  describe "properties_set" do
+  describe "property_set" do
     alias Pulap.App.PropertiesSet
 
     @valid_attrs %{description: "some description", holder_id: "7488a646-e31f-11e4-aace-600308960662", id: "7488a646-e31f-11e4-aace-600308960662", is_active: true, is_logical_deleted: true, name: "some name", started_at: "2010-04-17 14:00:00.000000Z"}
     @update_attrs %{description: "some updated description", holder_id: "7488a646-e31f-11e4-aace-600308960668", id: "7488a646-e31f-11e4-aace-600308960668", is_active: false, is_logical_deleted: false, name: "some updated name", started_at: "2011-05-18 15:01:01.000000Z"}
     @invalid_attrs %{description: nil, holder_id: nil, id: nil, is_active: nil, is_logical_deleted: nil, name: nil, started_at: nil}
 
-    def properties_set_fixture(attrs \\ %{}) do
-      {:ok, properties_set} =
+    def property_set_fixture(attrs \\ %{}) do
+      {:ok, property_set} =
         attrs
         |> Enum.into(@valid_attrs)
-        |> App.create_properties_set()
+        |> App.create_property_set()
 
-      properties_set
+      property_set
     end
 
-    test "list_properties_set/0 returns all properties_set" do
-      properties_set = properties_set_fixture()
-      assert App.list_properties_set() == [properties_set]
+    test "list_property_set/0 returns all property_set" do
+      property_set = property_set_fixture()
+      assert App.list_property_set() == [property_set]
     end
 
-    test "get_properties_set!/1 returns the properties_set with given id" do
-      properties_set = properties_set_fixture()
-      assert App.get_properties_set!(properties_set.id) == properties_set
+    test "get_property_set!/1 returns the property_set with given id" do
+      property_set = property_set_fixture()
+      assert App.get_property_set!(property_set.id) == property_set
     end
 
-    test "create_properties_set/1 with valid data creates a properties_set" do
-      assert {:ok, %PropertiesSet{} = properties_set} = App.create_properties_set(@valid_attrs)
-      assert properties_set.description == "some description"
-      assert properties_set.holder_id == "7488a646-e31f-11e4-aace-600308960662"
-      assert properties_set.id == "7488a646-e31f-11e4-aace-600308960662"
-      assert properties_set.is_active == true
-      assert properties_set.is_logical_deleted == true
-      assert properties_set.name == "some name"
-      assert properties_set.started_at == DateTime.from_naive!(~N[2010-04-17 14:00:00.000000Z], "Etc/UTC")
+    test "create_property_set/1 with valid data creates a property_set" do
+      assert {:ok, %PropertiesSet{} = property_set} = App.create_property_set(@valid_attrs)
+      assert property_set.description == "some description"
+      assert property_set.holder_id == "7488a646-e31f-11e4-aace-600308960662"
+      assert property_set.id == "7488a646-e31f-11e4-aace-600308960662"
+      assert property_set.is_active == true
+      assert property_set.is_logical_deleted == true
+      assert property_set.name == "some name"
+      assert property_set.started_at == DateTime.from_naive!(~N[2010-04-17 14:00:00.000000Z], "Etc/UTC")
     end
 
-    test "create_properties_set/1 with invalid data returns error changeset" do
-      assert {:error, %Ecto.Changeset{}} = App.create_properties_set(@invalid_attrs)
+    test "create_property_set/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = App.create_property_set(@invalid_attrs)
     end
 
-    test "update_properties_set/2 with valid data updates the properties_set" do
-      properties_set = properties_set_fixture()
-      assert {:ok, properties_set} = App.update_properties_set(properties_set, @update_attrs)
-      assert %PropertiesSet{} = properties_set
-      assert properties_set.description == "some updated description"
-      assert properties_set.holder_id == "7488a646-e31f-11e4-aace-600308960668"
-      assert properties_set.id == "7488a646-e31f-11e4-aace-600308960668"
-      assert properties_set.is_active == false
-      assert properties_set.is_logical_deleted == false
-      assert properties_set.name == "some updated name"
-      assert properties_set.started_at == DateTime.from_naive!(~N[2011-05-18 15:01:01.000000Z], "Etc/UTC")
+    test "update_property_set/2 with valid data updates the property_set" do
+      property_set = property_set_fixture()
+      assert {:ok, property_set} = App.update_property_set(property_set, @update_attrs)
+      assert %PropertiesSet{} = property_set
+      assert property_set.description == "some updated description"
+      assert property_set.holder_id == "7488a646-e31f-11e4-aace-600308960668"
+      assert property_set.id == "7488a646-e31f-11e4-aace-600308960668"
+      assert property_set.is_active == false
+      assert property_set.is_logical_deleted == false
+      assert property_set.name == "some updated name"
+      assert property_set.started_at == DateTime.from_naive!(~N[2011-05-18 15:01:01.000000Z], "Etc/UTC")
     end
 
-    test "update_properties_set/2 with invalid data returns error changeset" do
-      properties_set = properties_set_fixture()
-      assert {:error, %Ecto.Changeset{}} = App.update_properties_set(properties_set, @invalid_attrs)
-      assert properties_set == App.get_properties_set!(properties_set.id)
+    test "update_property_set/2 with invalid data returns error changeset" do
+      property_set = property_set_fixture()
+      assert {:error, %Ecto.Changeset{}} = App.update_property_set(property_set, @invalid_attrs)
+      assert property_set == App.get_property_set!(property_set.id)
     end
 
-    test "delete_properties_set/1 deletes the properties_set" do
-      properties_set = properties_set_fixture()
-      assert {:ok, %PropertiesSet{}} = App.delete_properties_set(properties_set)
-      assert_raise Ecto.NoResultsError, fn -> App.get_properties_set!(properties_set.id) end
+    test "delete_property_set/1 deletes the property_set" do
+      property_set = property_set_fixture()
+      assert {:ok, %PropertiesSet{}} = App.delete_property_set(property_set)
+      assert_raise Ecto.NoResultsError, fn -> App.get_property_set!(property_set.id) end
     end
 
-    test "change_properties_set/1 returns a properties_set changeset" do
-      properties_set = properties_set_fixture()
-      assert %Ecto.Changeset{} = App.change_properties_set(properties_set)
+    test "change_property_set/1 returns a property_set changeset" do
+      property_set = property_set_fixture()
+      assert %Ecto.Changeset{} = App.change_property_set(property_set)
     end
   end
 
@@ -82,77 +82,77 @@ defmodule Pulap.AppTest do
     @update_attrs %{description: "some updated description", holder_id: "7488a646-e31f-11e4-aace-600308960668", id: "7488a646-e31f-11e4-aace-600308960668", is_active: false, is_logical_deleted: false, name: "some updated name", started_at: "2011-05-18 15:01:01.000000Z"}
     @invalid_attrs %{description: nil, holder_id: nil, id: nil, is_active: nil, is_logical_deleted: nil, name: nil, started_at: nil}
 
-    def properties_set_fixture(attrs \\ %{}) do
-      {:ok, properties_set} =
+    def property_set_fixture(attrs \\ %{}) do
+      {:ok, property_set} =
         attrs
         |> Enum.into(@valid_attrs)
-        |> App.create_properties_set()
+        |> App.create_property_set()
 
-      properties_set
+      property_set
     end
 
     test "list_property_sets/0 returns all property_sets" do
-      properties_set = properties_set_fixture()
-      assert App.list_property_sets() == [properties_set]
+      property_set = property_set_fixture()
+      assert App.list_property_sets() == [property_set]
     end
 
-    test "get_properties_set!/1 returns the properties_set with given id" do
-      properties_set = properties_set_fixture()
-      assert App.get_properties_set!(properties_set.id) == properties_set
+    test "get_property_set!/1 returns the property_set with given id" do
+      property_set = property_set_fixture()
+      assert App.get_property_set!(property_set.id) == property_set
     end
 
-    test "create_properties_set/1 with valid data creates a properties_set" do
-      assert {:ok, %PropertiesSet{} = properties_set} = App.create_properties_set(@valid_attrs)
-      assert properties_set.description == "some description"
-      assert properties_set.holder_id == "7488a646-e31f-11e4-aace-600308960662"
-      assert properties_set.id == "7488a646-e31f-11e4-aace-600308960662"
-      assert properties_set.is_active == true
-      assert properties_set.is_logical_deleted == true
-      assert properties_set.name == "some name"
-      assert properties_set.started_at == DateTime.from_naive!(~N[2010-04-17 14:00:00.000000Z], "Etc/UTC")
+    test "create_property_set/1 with valid data creates a property_set" do
+      assert {:ok, %PropertiesSet{} = property_set} = App.create_property_set(@valid_attrs)
+      assert property_set.description == "some description"
+      assert property_set.holder_id == "7488a646-e31f-11e4-aace-600308960662"
+      assert property_set.id == "7488a646-e31f-11e4-aace-600308960662"
+      assert property_set.is_active == true
+      assert property_set.is_logical_deleted == true
+      assert property_set.name == "some name"
+      assert property_set.started_at == DateTime.from_naive!(~N[2010-04-17 14:00:00.000000Z], "Etc/UTC")
     end
 
-    test "create_properties_set/1 with invalid data returns error changeset" do
-      assert {:error, %Ecto.Changeset{}} = App.create_properties_set(@invalid_attrs)
+    test "create_property_set/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = App.create_property_set(@invalid_attrs)
     end
 
-    test "update_properties_set/2 with valid data updates the properties_set" do
-      properties_set = properties_set_fixture()
-      assert {:ok, properties_set} = App.update_properties_set(properties_set, @update_attrs)
-      assert %PropertiesSet{} = properties_set
-      assert properties_set.description == "some updated description"
-      assert properties_set.holder_id == "7488a646-e31f-11e4-aace-600308960668"
-      assert properties_set.id == "7488a646-e31f-11e4-aace-600308960668"
-      assert properties_set.is_active == false
-      assert properties_set.is_logical_deleted == false
-      assert properties_set.name == "some updated name"
-      assert properties_set.started_at == DateTime.from_naive!(~N[2011-05-18 15:01:01.000000Z], "Etc/UTC")
+    test "update_property_set/2 with valid data updates the property_set" do
+      property_set = property_set_fixture()
+      assert {:ok, property_set} = App.update_property_set(property_set, @update_attrs)
+      assert %PropertiesSet{} = property_set
+      assert property_set.description == "some updated description"
+      assert property_set.holder_id == "7488a646-e31f-11e4-aace-600308960668"
+      assert property_set.id == "7488a646-e31f-11e4-aace-600308960668"
+      assert property_set.is_active == false
+      assert property_set.is_logical_deleted == false
+      assert property_set.name == "some updated name"
+      assert property_set.started_at == DateTime.from_naive!(~N[2011-05-18 15:01:01.000000Z], "Etc/UTC")
     end
 
-    test "update_properties_set/2 with invalid data returns error changeset" do
-      properties_set = properties_set_fixture()
-      assert {:error, %Ecto.Changeset{}} = App.update_properties_set(properties_set, @invalid_attrs)
-      assert properties_set == App.get_properties_set!(properties_set.id)
+    test "update_property_set/2 with invalid data returns error changeset" do
+      property_set = property_set_fixture()
+      assert {:error, %Ecto.Changeset{}} = App.update_property_set(property_set, @invalid_attrs)
+      assert property_set == App.get_property_set!(property_set.id)
     end
 
-    test "delete_properties_set/1 deletes the properties_set" do
-      properties_set = properties_set_fixture()
-      assert {:ok, %PropertiesSet{}} = App.delete_properties_set(properties_set)
-      assert_raise Ecto.NoResultsError, fn -> App.get_properties_set!(properties_set.id) end
+    test "delete_property_set/1 deletes the property_set" do
+      property_set = property_set_fixture()
+      assert {:ok, %PropertiesSet{}} = App.delete_property_set(property_set)
+      assert_raise Ecto.NoResultsError, fn -> App.get_property_set!(property_set.id) end
     end
 
-    test "change_properties_set/1 returns a properties_set changeset" do
-      properties_set = properties_set_fixture()
-      assert %Ecto.Changeset{} = App.change_properties_set(properties_set)
+    test "change_property_set/1 returns a property_set changeset" do
+      property_set = property_set_fixture()
+      assert %Ecto.Changeset{} = App.change_property_set(property_set)
     end
   end
 
   describe "properties" do
     alias Pulap.App.Property
 
-    @valid_attrs %{boolean: true, date: ~D[2010-04-17], datetime: ~N[2010-04-17 14:00:00.000000], decimal: "120.5", description: "some description", float: 120.5, geolocation: 120.5, id: "7488a646-e31f-11e4-aace-600308960662", integer: 42, is_active: true, is_logical_deleted: true, name: "some name", properties_set_name: "some properties_set_name", property_data_type: "some property_data_type", string: "some string", time: ~T[14:00:00.000000], uuid: "7488a646-e31f-11e4-aace-600308960662"}
-    @update_attrs %{boolean: false, date: ~D[2011-05-18], datetime: ~N[2011-05-18 15:01:01.000000], decimal: "456.7", description: "some updated description", float: 456.7, geolocation: 456.7, id: "7488a646-e31f-11e4-aace-600308960668", integer: 43, is_active: false, is_logical_deleted: false, name: "some updated name", properties_set_name: "some updated properties_set_name", property_data_type: "some updated property_data_type", string: "some updated string", time: ~T[15:01:01.000000], uuid: "7488a646-e31f-11e4-aace-600308960668"}
-    @invalid_attrs %{boolean: nil, date: nil, datetime: nil, decimal: nil, description: nil, float: nil, geolocation: nil, id: nil, integer: nil, is_active: nil, is_logical_deleted: nil, name: nil, properties_set_name: nil, property_data_type: nil, string: nil, time: nil, uuid: nil}
+    @valid_attrs %{boolean: true, date: ~D[2010-04-17], datetime: ~N[2010-04-17 14:00:00.000000], decimal: "120.5", description: "some description", float: 120.5, geolocation: 120.5, id: "7488a646-e31f-11e4-aace-600308960662", integer: 42, is_active: true, is_logical_deleted: true, name: "some name", property_set_name: "some property_set_name", property_data_type: "some property_data_type", string: "some string", time: ~T[14:00:00.000000], uuid: "7488a646-e31f-11e4-aace-600308960662"}
+    @update_attrs %{boolean: false, date: ~D[2011-05-18], datetime: ~N[2011-05-18 15:01:01.000000], decimal: "456.7", description: "some updated description", float: 456.7, geolocation: 456.7, id: "7488a646-e31f-11e4-aace-600308960668", integer: 43, is_active: false, is_logical_deleted: false, name: "some updated name", property_set_name: "some updated property_set_name", property_data_type: "some updated property_data_type", string: "some updated string", time: ~T[15:01:01.000000], uuid: "7488a646-e31f-11e4-aace-600308960668"}
+    @invalid_attrs %{boolean: nil, date: nil, datetime: nil, decimal: nil, description: nil, float: nil, geolocation: nil, id: nil, integer: nil, is_active: nil, is_logical_deleted: nil, name: nil, property_set_name: nil, property_data_type: nil, string: nil, time: nil, uuid: nil}
 
     def property_fixture(attrs \\ %{}) do
       {:ok, property} =
@@ -187,7 +187,7 @@ defmodule Pulap.AppTest do
       assert property.is_active == true
       assert property.is_logical_deleted == true
       assert property.name == "some name"
-      assert property.properties_set_name == "some properties_set_name"
+      assert property.property_set_name == "some property_set_name"
       assert property.property_data_type == "some property_data_type"
       assert property.string == "some string"
       assert property.time == ~T[14:00:00.000000]
@@ -214,7 +214,7 @@ defmodule Pulap.AppTest do
       assert property.is_active == false
       assert property.is_logical_deleted == false
       assert property.name == "some updated name"
-      assert property.properties_set_name == "some updated properties_set_name"
+      assert property.property_set_name == "some updated property_set_name"
       assert property.property_data_type == "some updated property_data_type"
       assert property.string == "some updated string"
       assert property.time == ~T[15:01:01.000000]
