@@ -28,31 +28,34 @@ defmodule PulapWeb.Router do
     plug :accepts, ["json"]
   end
 
+
   scope "/", PulapWeb do
-    pipe_through [:browser, :auth] # Use the default browser stack
+    pipe_through [:browser] # Use the default browser stack
     get "/", PageController, :index
-    #resources "/users", UserController, only: [:new, :create]
     get "/signup", UserController, :signup
     post "/signup", UserController, :signup
-    resources "/users", UserController do
-      # nested resources
-    end
-    get "/signin", SessionController, :signin
+    get "/signin", SessionController, :init_signin
     post "/signin", SessionController, :signin
-    get "/signout", SessionController, :signout
-    #resources "/sessions", SessionController, only: [:new, :create, :delete]
-
   end
 
   scope "/", PulapWeb do
-    pipe_through [:browser, :ensure_auth] # Use the default browser stack
-    # get "/init-sign-up", UserController, :init_sign_up
-    # post "/sign-up", UserController, :sign_up
-    # resources "/users", UserController do
-    #   # nested resources
-    # end
-    resources "/profile", ProfileController do
-      # nested resources
+    pipe_through [:browser, :auth] # Use the default browser stack
+    get "/signout", SessionController, :signout
+  #   get "/", PageController, :index
+  #   get "/signup", UserController, :signup
+  #   post "/signup", UserController, :signup
+  #   get "/signin", SessionController, :signin
+  #   post "/signin", SessionController, :signin
+  end
+
+  scope "/", PulapWeb do
+    pipe_through [:browser, :auth, :ensure_auth] # Use the default browser stack
+    get "/dashboard", DashboardController, :index
+    resources "/users", UserController do
+      get "/profile/edit", ProfileController, :edit
+      get "/profile", ProfileController, :show
+      patch "/profile", ProfileController, :update
+      put "/profile", ProfileController, :update
     end
     resources "/organizations", OrganizationController do
       # nested resources
@@ -78,7 +81,7 @@ defmodule PulapWeb.Router do
     resources "/properties", PropertyController do
       # nested resources
     end
-    resources "/property-sets", PropertiesSetController do
+    resources "/property-sets", PropertySetController do
       # nested resources
     end
     resources "/plans", PlanController do
@@ -96,7 +99,7 @@ defmodule PulapWeb.Router do
     resources "/currencies", CurrencyController do
       # nested resources
     end
-    resources "/real-estate", RealEstateController do
+    resources "/real_estates", RealEstateController do
       # nested resources
     end
     resources "/tenures", TenureController do
