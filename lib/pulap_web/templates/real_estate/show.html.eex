@@ -19,12 +19,7 @@
 
   <li>
     <strong>Geo area canonical:</strong>
-    <%= @real_estate.geo_area_canonical %>
-  </li>
-
-  <li>
-    <strong>Geo area loc:</strong>
-    <%= @real_estate.geo_area_loc %>
+    <%= @real_estate.geo_area_canonical_name %>
   </li>
 
   <li>
@@ -89,7 +84,7 @@
 
   <li>
     <strong>Currency val:</strong>
-    <%= @real_estate.currency_val %>
+    <%= @real_estate.currency_code %>
   </li>
 
   <li>
@@ -195,46 +190,6 @@
   <li>
     <strong>House equipment description:</strong>
     <%= @real_estate.house_equipment_description %>
-  </li>
-
-  <li>
-    <strong>Active:</strong>
-    <%= @real_estate.active %>
-  </li>
-
-  <li>
-    <strong>Logical deleted:</strong>
-    <%= @real_estate.logical_deleted %>
-  </li>
-
-  <li>
-    <strong>Cards:</strong>
-    <%= @real_estate.cards %>
-  </li>
-
-  <li>
-    <strong>Geolocation:</strong>
-    <%= @real_estate.geolocation %>
-  </li>
-
-  <li>
-    <strong>Locale:</strong>
-    <%= @real_estate.locale %>
-  </li>
-
-  <li>
-    <strong>Position:</strong>
-    <%= @real_estate.position %>
-  </li>
-
-  <li>
-    <strong>Is active:</strong>
-    <%= @real_estate.is_active %>
-  </li>
-
-  <li>
-    <strong>Is logical deleted:</strong>
-    <%= @real_estate.is_logical_deleted %>
   </li>
 
 </ul>
