@@ -9,13 +9,6 @@ defmodule PulapWeb.Router do
     plug :put_secure_browser_headers
   end
 
-  # pipeline :browser_auth do
-  #   plug Guardian.Plug.VerifySession
-  #   plug Guardian.Plug.EnsureAuthenticated, handler: Pulap.Token
-  #   plug Guardian.Plug.LoadResource
-  #   plug PulapWeb.Plugs.AssignGuardianUser
-  # end 
-
   pipeline :auth do
     plug Pulap.Auth.Pipeline
   end
@@ -27,7 +20,6 @@ defmodule PulapWeb.Router do
   pipeline :api do
     plug :accepts, ["json"]
   end
-
 
   scope "/", PulapWeb do
     pipe_through [:browser] # Use the default browser stack
