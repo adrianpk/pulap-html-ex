@@ -25,6 +25,7 @@ defmodule PulapWeb do
       import PulapWeb.Gettext
       # Custom
       alias Pulap.Repo
+      import Pulap.Controllers.Helpers
     end
   end
 
