@@ -17,5 +17,3 @@
 </div>
 
 <br/>
-
-<span><%= link "Home", to: page_path(@conn, :index) %></span>

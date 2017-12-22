@@ -19,11 +19,6 @@
       <td><%= real_estate.geo_area_name %></td>
       <td><%= real_estate.street %></td>
       <td><%= real_estate.short_description %></td>
-      <td>
-          <%= link "Show", to: real_estate_path(@conn, :show, real_estate), class: "btn btn-default btn-xs" %>
-          <%= link "Show", to: real_estate_path(@conn, :show, real_estate), class: "btn btn-default btn-xs" %>
-      </td>
-
       <td class="text-right">
         <span><%= link "Show", to: real_estate_path(@conn, :show, real_estate), class: "btn btn-default btn-xs" %></span>
         <span><%= link "Edit", to: real_estate_path(@conn, :edit, real_estate), class: "btn btn-default btn-xs" %></span>

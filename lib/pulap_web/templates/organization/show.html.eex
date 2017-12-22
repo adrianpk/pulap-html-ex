@@ -3,11 +3,6 @@
 <ul>
 
   <li>
-    <strong>Id:</strong>
-    <%= @organization.id %>
-  </li>
-
-  <li>
     <strong>Name:</strong>
     <%= @organization.name %>
   </li>
@@ -16,38 +11,7 @@
     <strong>Description:</strong>
     <%= @organization.description %>
   </li>
-
-  <li>
-    <strong>Annotations:</strong>
-    <%= @organization.annotations %>
-  </li>
-
-  <li>
-    <strong>Geolocation:</strong>
-    <%= @organization.geolocation %>
-  </li>
-
-  <li>
-    <strong>Started at:</strong>
-    <%= @organization.started_at %>
-  </li>
-
-  <li>
-    <strong>Created by:</strong>
-    <%= @organization.created_by %>
-  </li>
-
-  <li>
-    <strong>Is active:</strong>
-    <%= @organization.is_active %>
-  </li>
-
-  <li>
-    <strong>Is logical deleted:</strong>
-    <%= @organization.is_logical_deleted %>
-  </li>
-
 </ul>
 
+<span><%= link "Cancel", to: organization_path(@conn, :index) %></span>
 <span><%= link "Edit", to: organization_path(@conn, :edit, @organization) %></span>
-<span><%= link "Back", to: organization_path(@conn, :index) %></span>

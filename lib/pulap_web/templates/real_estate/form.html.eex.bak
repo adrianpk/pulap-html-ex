@@ -24,23 +24,45 @@
   </div>
 
   <div class="form-group">
-      <%= label f, "Address", class: "control-label" %><br/>
-      <%= label f, :street, class: "control-label" %>
-      <%= text_input f, :street, class: ":form-control" %>
-      <%= label f, "nº", class: "control-label" %>
-      <%= text_input f, :street_number, class: ":form-control" %>
-      <%= error_tag f, :street %>
-      <%= error_tag f, :street_number %>
-      <br/><br/>
-      <%= label f, "Block", class: "control-label" %>
-      <%= text_input f, :block, class: ":form-control" %>
-      <%= label f, "Floor", class: "control-label" %>
-      <%= text_input f, :floor, class: ":form-control" %>
-      <%= label f, "Appartment", class: "control-label" %>
-      <%= text_input f, :appartment_number, class: ":form-control" %>
-      <%= error_tag f, :block %>
-      <%= error_tag f, :floor %>
-      <%= error_tag f, :appartment_number %>
+    <%= label f, :geo_area_canonical, class: "control-label" %>
+    <%= text_input f, :geo_area_canonical, class: "form-control" %>
+    <%= error_tag f, :geo_area_canonical %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :geo_area_loc, class: "control-label" %>
+    <%= text_input f, :geo_area_loc, class: "form-control" %>
+    <%= error_tag f, :geo_area_loc %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :street, class: "control-label" %>
+    <%= text_input f, :street, class: "form-control" %>
+    <%= error_tag f, :street %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :street_number, class: "control-label" %>
+    <%= text_input f, :street_number, class: "form-control" %>
+    <%= error_tag f, :street_number %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :block, class: "control-label" %>
+    <%= text_input f, :block, class: "form-control" %>
+    <%= error_tag f, :block %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :floor, class: "control-label" %>
+    <%= text_input f, :floor, class: "form-control" %>
+    <%= error_tag f, :floor %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :apartment, class: "control-label" %>
+    <%= text_input f, :apartment, class: "form-control" %>
+    <%= error_tag f, :apartment %>
   </div>
 
   <div class="form-group">
@@ -49,12 +71,12 @@
     <%= error_tag f, :property_type_val_en %>
   </div>
 
-  <!-- <div class="form-group">
-       <%= label f, :property_type_val_loc, class: "control-label" %>
-       <%= text_input f, :property_type_val_loc, class: "form-control" %>
-       <%= error_tag f, :property_type_val_loc %>
-       </div>
-  -->
+  <div class="form-group">
+    <%= label f, :property_type_val_loc, class: "control-label" %>
+    <%= text_input f, :property_type_val_loc, class: "form-control" %>
+    <%= error_tag f, :property_type_val_loc %>
+  </div>
+
   <div class="form-group">
     <%= label f, :total_area_m2, class: "control-label" %>
     <%= number_input f, :total_area_m2, step: "any", class: "form-control" %>
@@ -73,36 +95,36 @@
     <%= error_tag f, :price %>
   </div>
 
-  <!-- <div class="form-group">
-       <%= label f, :price_per_square_meter, class: "control-label" %>
-       <%= number_input f, :price_per_square_meter, step: "any", class: "form-control" %>
-       <%= error_tag f, :price_per_square_meter %>
-       </div>
+  <div class="form-group">
+    <%= label f, :price_per_square_meter, class: "control-label" %>
+    <%= number_input f, :price_per_square_meter, step: "any", class: "form-control" %>
+    <%= error_tag f, :price_per_square_meter %>
+  </div>
 
-       <div class="form-group">
-       <%= label f, :suggested_installment_loan, class: "control-label" %>
-       <%= number_input f, :suggested_installment_loan, step: "any", class: "form-control" %>
-       <%= error_tag f, :suggested_installment_loan %>
-       </div>
-  -->
-  <!-- <div class="form-group">
-       <%= label f, :currency_code, class: "control-label" %>
-       <%= text_input f, :currency_code, class: "form-control" %>
-       <%= error_tag f, :currency_code %>
-       </div>
-  -->
+  <div class="form-group">
+    <%= label f, :suggested_installment_loan, class: "control-label" %>
+    <%= number_input f, :suggested_installment_loan, step: "any", class: "form-control" %>
+    <%= error_tag f, :suggested_installment_loan %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :currency_code, class: "control-label" %>
+    <%= text_input f, :currency_code, class: "form-control" %>
+    <%= error_tag f, :currency_code %>
+  </div>
+
   <div class="form-group">
     <%= label f, :type_of_building_val_en, class: "control-label" %>
     <%= text_input f, :type_of_building_val_en, class: "form-control" %>
     <%= error_tag f, :type_of_building_val_en %>
   </div>
 
-  <!-- <div class="form-group">
-       <%= label f, :type_of_building_val_loc, class: "control-label" %>
-       <%= text_input f, :type_of_building_val_loc, class: "form-control" %>
-       <%= error_tag f, :type_of_building_val_loc %>
-       </div>
-  -->
+  <div class="form-group">
+    <%= label f, :type_of_building_val_loc, class: "control-label" %>
+    <%= text_input f, :type_of_building_val_loc, class: "form-control" %>
+    <%= error_tag f, :type_of_building_val_loc %>
+  </div>
+
   <div class="form-group">
     <%= label f, :year_of_construction, class: "control-label" %>
     <%= number_input f, :year_of_construction, class: "form-control" %>
@@ -218,6 +240,27 @@
   </div>
 
   <div class="form-group">
-    <%= submit "Update", class: "btn btn-primary" %>
+    <%= label f, :active, class: "control-label" %>
+    <%= checkbox f, :active, class: "checkbox" %>
+    <%= error_tag f, :active %>
   </div>
+
+  <div class="form-group">
+    <%= label f, :logical_deleted, class: "control-label" %>
+    <%= checkbox f, :logical_deleted, class: "checkbox" %>
+    <%= error_tag f, :logical_deleted %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :cards, class: "control-label" %>
+    <%= text_input f, :cards, class: "form-control" %>
+    <%= error_tag f, :cards %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :geolocation, class: "control-label" %>
+    <%= number_input f, :geolocation, step: "any", class: "form-control" %>
+    <%= error_tag f, :geolocation %>
+  </div>
+
 <% end %>

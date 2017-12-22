@@ -44,7 +44,7 @@
 
   <li>
     <strong>Apartment number:</strong>
-    <%= @real_estate.apartment_number %>
+    <%= @real_estate.apartment %>
   </li>
 
   <li>
@@ -194,5 +194,5 @@
 
 </ul>
 
-<span><%= link "Edit", to: real_estate_path(@conn, :edit, @real_estate) %></span>
 <span><%= link "Back", to: real_estate_path(@conn, :index) %></span>
+<span><%= link "Edit", to: real_estate_path(@conn, :edit, @real_estate) %></span>

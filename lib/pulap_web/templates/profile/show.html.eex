@@ -39,6 +39,4 @@
 
 </ul>
 
-<span><%= link "Home", to: page_path(@conn, :index) %></span>
-<span><%= link "Dashboard", to: dashboard_path(@conn, :index) %></span>
 <span><%= link "Edit", to: user_profile_path(@conn, :edit, @user) %></span>
