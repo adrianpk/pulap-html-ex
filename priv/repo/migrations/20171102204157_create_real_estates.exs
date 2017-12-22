@@ -15,7 +15,7 @@ defmodule Pulap.Repo.Migrations.CreateRealEstates do
       add :street_number, :string, size: 8
       add :block, :string, size: 8
       add :floor, :string, size: 4
-      add :apartment_number, :string, size: 6
+      add :apartment, :string, size: 6
       add :property_type_val_en, :string, size: 16
       add :property_type_val_loc, :string, size: 16
       add :total_area_m2, :float

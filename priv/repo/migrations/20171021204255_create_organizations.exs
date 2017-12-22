@@ -26,6 +26,7 @@ defmodule Pulap.Repo.Migrations.CreateOrganizations do
     end
 
     create unique_index(:organizations, [:name])
+    create index(:organizations, [:owner_id])
     create index(:organizations, [:created_by_id])
     create index(:organizations, [:updated_by_id])
 
