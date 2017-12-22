@@ -1,6 +1,5 @@
 defmodule PulapWeb.SessionController do
   use PulapWeb, :controller
-  require IEx
 
   alias Pulap.Auth
   alias Pulap.Auth.User

@@ -39,7 +39,7 @@ defmodule PulapWeb.RealEstateController do
   def update(conn, %{"id" => id, "real_estate" => real_estate_params}) do
     real_estate = Biz.get_real_estate!(id)
 
-    case Pulap.update_real_estate(real_estate, real_estate_params) do
+    case Biz.update_real_estate(real_estate, real_estate_params) do
       {:ok, real_estate} ->
         conn
         |> put_flash(:info, "Real estate updated successfully.")

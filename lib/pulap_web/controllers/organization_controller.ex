@@ -3,6 +3,7 @@ defmodule PulapWeb.OrganizationController do
 
   alias Pulap.Auth
   alias Pulap.Auth.Organization
+  require IEx
 
   def index(conn, _params) do
     organizations = Auth.list_organizations()
@@ -14,8 +15,15 @@ defmodule PulapWeb.OrganizationController do
     render(conn, "new.html", changeset: changeset)
   end
 
+  require IEx
+
   def create(conn, %{"organization" => organization_params}) do
-    case Auth.create_organization(organization_params) do
+    user = conn |> user_from_session
+    updated_params = organization_params
+                     |> Map.put("owner_id", user.id)
+                     |> Map.put("owner_username", user.username)
+    IEx.pry
+    case Auth.create_organization(updated_params) do
       {:ok, organization} ->
         conn
         |> put_flash(:info, "Organization created successfully.")

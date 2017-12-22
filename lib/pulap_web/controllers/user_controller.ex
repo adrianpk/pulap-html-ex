@@ -5,7 +5,8 @@ defmodule PulapWeb.UserController do
   alias Pulap.Auth
   alias Pulap.Auth.User
   alias Pulap.Auth.Guardian
-  require IEx
+
+  # plug :scrub_params, "user" when action in [:signup]
 
   def index(conn, _params) do
     users = Auth.list_users()
@@ -34,16 +35,16 @@ defmodule PulapWeb.UserController do
     render(conn, "new.html", changeset: changeset)
   end
 
-  def create(conn, %{"user" => user_params}) do
-    case Auth.create_user(user_params) do
-      {:ok, user} ->
-        conn
-        |> put_flash(:info, "User created successfully.")
-        |> redirect(to: user_path(conn, :show, user))
-      {:error, %Ecto.Changeset{} = changeset} ->
-        render(conn, "new.html", changeset: changeset)
-    end
-  end
+  # def create(conn, %{"user" => user_params}) do
+  #   case Auth.create_user(user_params) do
+  #     {:ok, user} ->
+  #       conn
+  #       |> put_flash(:info, "User created successfully.")
+  #       |> redirect(to: user_path(conn, :show, user))
+  #     {:error, %Ecto.Changeset{} = changeset} ->
+  #       render(conn, "new.html", changeset: changeset)
+  #   end
+  # end
 
   def show(conn, %{"id" => id}) do
     user = Auth.get_user!(id)
