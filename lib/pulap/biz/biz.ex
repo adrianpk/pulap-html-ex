@@ -60,7 +60,7 @@ defmodule Pulap.Biz do
 
   ## Examples
 
-      iex> update_real_estate(real_estate, %{field: new_value})
+  iex> update_real_estatepdate_real_estate(real_estate, %{field: new_value})
       {:ok, %RealEstate{}}
 
       iex> update_real_estate(real_estate, %{field: bad_value})
