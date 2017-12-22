@@ -9,7 +9,7 @@ defmodule Pulap.Auth.Guardian do
 
   def resource_from_claims(claims) do
     user = claims["sub"]
-    |> Auth.get_user!
+           |> Auth.get_user!
     {:ok, user}
     # If something goes wrong here return {:error, reason}
   end
