@@ -2,9 +2,7 @@ defmodule Pulap.Auth.Profile do
   use Pulap.Schema
   import Ecto.Changeset
   alias Pulap.Auth.Profile
-
-  #@primary_key {:id, Ecto.UUID, autogenerate: true}
-  #@foreign_key_type Ecto.UUID
+  require IEx
 
   schema "profiles" do
     field :anniversary_date, :utc_datetime

@@ -2,8 +2,6 @@ defmodule Pulap.Auth.User do
   use Pulap.Schema
   import Ecto.Changeset
   alias Pulap.Auth.User
-  require Logger
-  require IEx
 
   schema "users" do
     field :annotations, :string
@@ -66,7 +64,6 @@ defmodule Pulap.Auth.User do
   def signup_changeset(%User{} = user, attrs) do
     user
     |> cast(attrs, [:username, :password, :email, :given_name, :middle_names, :family_name])
-    # |> validate_required([:username, :password, :email, :given_name, :middle_names, :family_name])
     |> validate_required([:username, :password, :email])
     |> validate_length(:username, min: 4, max: 16)
     |> validate_length(:password, min: 8, max: 32)
@@ -103,14 +100,11 @@ defmodule Pulap.Auth.User do
       true ->
         case find_by_email(email) do
           nil ->
-            IEx.pry
             changeset
           _account ->
-            IEx.pry
             changeset |> add_error(:email, "Email is already registered.")
         end
       _ ->
-        IEx.pry
         changeset |> add_error(:email, "Not an accepted domain.")
     end
   end
