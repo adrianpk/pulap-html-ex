@@ -57,6 +57,13 @@ exports.config = {
   },
 
   npm: {
-    enabled: true
+    enabled: true,
+    styles: {
+      'material-components-web': ['dist/material-components-web.min.css']
+    },
+    globals: {
+      'material-components-web': 'material-components-web'
+    }
   }
+
 };

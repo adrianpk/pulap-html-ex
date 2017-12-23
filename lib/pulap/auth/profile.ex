@@ -2,7 +2,6 @@ defmodule Pulap.Auth.Profile do
   use Pulap.Schema
   import Ecto.Changeset
   alias Pulap.Auth.Profile
-  require IEx
 
   schema "profiles" do
     field :anniversary_date, :utc_datetime
