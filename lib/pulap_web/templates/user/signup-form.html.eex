@@ -1,29 +1,75 @@
 <%= form_for @changeset, @action, fn f -> %>
   <%= if @changeset.action do %>
     <div class="alert alert-danger">
-      <p>Oops, something went wrong! Please check the errors below.</p>
+        <p>Oops, something went wrong! Please check the errors below.</p>
     </div>
   <% end %>
 
-  <div class="form-group">
-    <%= label f, :username, class: "control-label" %>
-    <%= text_input f, :username, class: "form-control" %>
-    <%= error_tag f, :username %>
-  </div>
 
-  <div class="form-group">
-    <%= label f, :email, class: "control-label" %>
-    <%= text_input f, :email, class: "form-control" %>
-    <%= error_tag f, :email %>
-  </div>
+  <section class="form-element">
+      <section id="username-field-wrapper">
+          <div class="mdc-text-field">
+              <input type="text"
+                     class="mdc-text-field__input"
+                     id="user_username"
+                     name="user[username]"
+                     aria-controls="username"/>
+              <label for="username"
+                     class="mdc-text-field__label">
+                  Username
+              </label>
+              <div class="mdc-text-field__bottom-line"></div>
+          </div>
+          <p id="username-helper-text" class="mdc-text-field-helper-text" aria-hidden="false" style="display:none;">
+              Must be at least 5 characteres long
+              <%= error_tag f, :username %>
+          </p>
+      </section>
+  </section>
 
-  <div class="form-group">
-    <%= label f, :password, class: "control-label" %>
-    <%= password_input f, :password, class: "form-control" %>
-    <%= error_tag f, :password %>
-  </div>
+  <section class="form-element">
+      <section id="demo-text-field-wrapper">
+          <div class="mdc-text-field">
+              <input type="text"
+                     class="mdc-text-field__input"
+                     id="user_email"
+                     name="user[email]"
+                     aria-controls="email"/>
+              <label for="email"
+                     class="mdc-text-field__label">
+                  Email Address
+              </label>
+              <div class="mdc-text-field__bottom-line"></div>
+          </div>
+          <p id="email-helper-text" class="mdc-text-field-helper-text" aria-hidden="false" style="display:none;">
+              Must be a vaild email address
+              <%= error_tag f, :email %>
+          </p>
+      </section>
+  </section>
 
-  <div class="form-group">
-    <%= submit "Submit", class: "btn btn-primary" %>
-  </div>
+  <section class="form-element">
+      <div class="mdc-text-field">
+          <input required pattern=".{8,}"
+                 type="password"
+                 class="mdc-text-field__input"
+                 id="user_password"
+                 name="user[password]"
+                 aria-controls="password-validation-msg"
+                 autocomplete="current-password">
+          <label for="password"
+                 class="mdc-text-field__label">
+              Choose password
+          </label>
+          <div class="mdc-text-field__bottom-line"></div>
+      </div>
+      <p class="mdc-text-field-helper-text mdc-text-field-helper-text--persistent mdc-text-field-helper-text--validation-msg"
+         id="password-validation-msg">
+          Must be at least 8 characters long
+          <%= error_tag f, :password %>
+      </p>
+  </section>
+
+  <%= submit "Submit", class: "mdc-button mdc-button--raised" %>
+
 <% end %>

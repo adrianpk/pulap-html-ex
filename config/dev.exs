@@ -34,7 +34,7 @@ config :pulap, PulapWeb.Endpoint,
 config :pulap, PulapWeb.Endpoint,
   live_reload: [
     patterns: [
-      ~r{priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$},
+      ~r{priv/static/.*(js|css|png|jpeg|jpg|gif|svg|sass)$},
       ~r{priv/gettext/.*(po)$},
       ~r{lib/pulap_web/views/.*(ex)$},
       ~r{lib/pulap_web/templates/.*(eex)$}

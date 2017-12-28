@@ -47,6 +47,12 @@ exports.config = {
     babel: {
       // Do not use ES6 compiler in vendor code
       ignore: [/vendor/]
+    },
+    sass: {
+        mode: "native",
+        options: {
+            includePaths: ['node_modules', 'node_modules/@material/*']
+        }
     }
   },
 
@@ -56,14 +62,24 @@ exports.config = {
     }
   },
 
-  npm: {
-    enabled: true,
-    styles: {
-      'material-components-web': ['dist/material-components-web.min.css']
-    },
-    globals: {
-      'material-components-web': 'material-components-web'
-    }
-  }
-
+  // npm: {
+  //   enabled: true,
+  //   styles: {
+  //     'material-components-web': ['dist/material-components-web.min.css']
+  //   },
+  //   globals: {
+  //     'material-components-web': 'material-components-web'
+  //   }
+  // }
+  // npm: {
+  //   enabled: true,
+  //    styles: {
+  //      'material-design-lite': ['dist/material.min.css'],
+  //      'mdl-ext': ['lib/mdl-ext.min.css']
+  //    },
+  //    globals: {
+  //      'material': 'material-design-lite',
+  //      'mdl-ext': 'mdl-ext'
+  //    }
+  // }
 };
