@@ -1,0 +1,14 @@
+<header class="mdc-toolbar mdc-toolbar--fixed mdc-toolbar--waterfall mdc-toolbar--flexible mdc-toolbar--flexible-default-behavior">
+    <div class="mdc-toolbar__row">
+        <section class="mdc-toolbar__section mdc-toolbar__section--align-start">
+            <a href="#" class="material-icons mdc-toolbar__menu-icon">menu</a>
+            <span class="mdc-toolbar__title">Pulap</span>
+        </section>
+        <section class="mdc-toolbar__section mdc-toolbar__section--align-end" role="toolbar">
+            <a href="javascript:window.history.back()" class="material-icons mdc-toolbar__menu-icon">arrow_back</a>
+            <a href="/" class="material-icons mdc-toolbar__icon" aria-label="Navigate to Home" alt="Print">home</a>
+            <a href="/dashboard" class="material-icons mdc-toolbar__icon" aria-label="Navigate to Dashboard" alt="Dashboard">dashboard</a>
+            <a href="/signin" class="material-icons mdc-toolbar__icon" aria-label="Sign in" alt="Signin">person</a>
+        </section>
+    </div>
+</header>

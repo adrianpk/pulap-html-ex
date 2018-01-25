@@ -1,0 +1,36 @@
+<section>
+    <div class="mdc-snackbar mdc-snackbar--active"
+         aria-live="assertive"
+         aria-atomic="true"
+         aria-hidden="true">
+        <div class="mdc-snackbar__text">
+            <%= case @opts[:type] do %>
+            <% :info -> %>
+                <%= @opts[:message_text] %>
+            <% :error -> %>
+                <%= @opts[:message_text] %>
+            <% _ -> %>
+                <%= @opts[:type] %>
+            <% end %>
+        </div>
+        <%= if @opts[:action_enabled] do %>
+        <div>
+            <!-- <a href="<%= @opts[:action_link] %>" class="mdc-snackbar__action-wrapper mdc-button"> -->
+            <a href="#" class="mdc-snackbar__action-wrapper mdc-button">
+                <%= @opts[:button_label] %>
+            </a>
+        </div>
+        <% end %>
+    </div>
+</section>
+<script>
+ const snackbar = new MDCSnackbar(document.querySelector('.mdc-snackbar'));
+ const dataObj = {
+     //message: messageInput.value,
+     actionText: 'Undo',
+     actionHandler: function () {
+         console.log('my cool function');
+     }
+ };
+ snackbar.show(dataObj);
+</script>

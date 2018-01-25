@@ -1,0 +1,3 @@
+<button type="<%= @opts[:type] %>" class="<%= @opts[:class] %>">
+  <%= @opts[:label] %>
+</button>

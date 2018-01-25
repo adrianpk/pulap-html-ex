@@ -1,17 +1,12 @@
 <%= form_for @changeset, @action, fn f -> %>
-  <div class="form-group">
-    <%= label f, :username, class: "control-label" %>
-    <%= text_input f, :username, class: "form-control" %>
-    <%= error_tag f, :username %>
-  </div>
 
-  <div class="form-group">
-    <%= label f, :password, class: "control-label" %>
-    <%= password_input f, :password, class: "form-control" %>
-    <%= error_tag f, :password %>
-  </div>
+  <%= if @changeset.action || true do %>
+   Ooops, something wrong happened.
+  <% end %>
 
-  <div class="form-group">
-    <%= submit "Log in", class: "btn btn-primary" %>
-  </div>
+  <%= mdc_text_field f, :username %>
+
+  <%= mdc_text_field f, :password, type: "password" %>
+
+  <%= mdc_button f, :sign_in, type: "submit", class: "raised", label: "Sign in" %>
 <% end %>

@@ -1,10 +1,9 @@
-<h2>Log in</h2>
+<h2>Signin</h2>
 
 <%= if @maybe_user == nil do %>
   <%= render "form.html", Map.put(assigns, :action, session_path(@conn, :signin)) %>
-  <span><%= link "Back", to: page_path(@conn, :index) %></span>
 
-<% else %>
+  <% else %>
   <h1>Hello <%= @maybe_user.username%>!</h1>
 
   <span><%= link "Logout", to: session_path(@conn, :signout), method: :post%></span>

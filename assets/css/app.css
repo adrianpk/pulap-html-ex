@@ -1,1 +1,29 @@
 /* This file is for your main application css. */
+.mdc-app {
+    margin: 0px;
+}
+.mdc-toolbar__row:first-child::after {
+    /* background-image: url("../images/4-3.jpg"); */
+    background-size: cover;
+    background-position: center;
+}
+.app-paragraph {
+    margin: 0px;
+    padding: 20px 28px;
+}
+@media (max-width: 599px) {
+    .app-paragraph {
+        padding: 16px;
+    }
+}
+footer {
+    position: fixed;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+    color: red;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+.mdl-grid.center-items {
+    justify-content: center;
+}

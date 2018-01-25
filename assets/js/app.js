@@ -21,7 +21,33 @@ import "phoenix_html";
 // import socket from "./socket"
 
 // Custom
-// import "material-components-web";
-// import "material-components-web/material-components-web";
-// import "material-design-lite/material";
-// import "mdl-ext"; 
+
+         (function() {
+             var tfs = document.querySelectorAll(
+                 '.mdc-text-field:not([data-demo-no-auto-js])'
+             );
+             for (var i = 0, tf; tf = tfs[i]; i++) {
+                 mdc.textField.MDCTextField.attachTo(tf);
+             }
+         })();
+
+        (function() {
+             var pollId = 0;
+             pollId = setInterval(function() {
+                 var pos = getComputedStyle(document.querySelector('.mdc-toolbar')).position;
+                 if (pos === 'fixed' || pos === 'relative') {
+                     init();
+                     clearInterval(pollId);
+                 }
+             }, 250);
+             function init() {
+                 var ratioSpan = document.querySelector("#ratio");
+                 var toolbar = mdc.toolbar.MDCToolbar.attachTo(document.querySelector('.mdc-toolbar'));
+                 toolbar.listen('MDCToolbar:change', function(evt) {
+                     var flexibleExpansionRatio = evt.detail.flexibleExpansionRatio;
+                     ratioSpan.innerHTML = flexibleExpansionRatio.toFixed(2);
+                 });
+                 toolbar.fixedAdjustElement = document.querySelector('.mdc-toolbar-fixed-adjust');
+             }
+         })();
+ 

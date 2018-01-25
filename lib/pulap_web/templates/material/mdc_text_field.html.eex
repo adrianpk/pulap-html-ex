@@ -1,0 +1,20 @@
+<section class="form-element">
+    <section id="<%= @opts[:name] %>-field-wrapper" class="text-center">
+        <div class="mdc-text-field">
+            <input type="<%= @opts[:type] %>"
+                   class="mdc-text-field__input"
+                   id="<%= @opts[:id] %>"
+                   name="<%= @opts[:name] %>"
+                   aria-controls="<%= @opts[:name] %>"/>
+            <label for="<%= @opts[:name] %>"
+                   class="mdc-text-field__label">
+                <%= @opts[:label] %>
+            </label>
+            <div class="mdc-text-field__bottom-line"></div>
+        </div>
+        <p id="<%= @opts[:name] %>-helper-text" class="mdc-text-field-helper-text" aria-hidden="false" style="display:none;">
+            <%= @opts[:error] %>
+        </p>
+    </section>
+</section>
+

@@ -29,7 +29,7 @@ defmodule PulapWeb.SessionController do
   defp signin_reply({:error, error}, conn) do
     conn
     |> put_flash(:error, error)
-    |> redirect(to: "/")
+    |> redirect(to: "/signin")
   end
 
   defp signin_reply({:ok, user}, conn) do
